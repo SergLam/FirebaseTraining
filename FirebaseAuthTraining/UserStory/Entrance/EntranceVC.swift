@@ -8,13 +8,12 @@
 
 import UIKit
 import SnapKit
-import Eureka
 
-class EntranceVC: FormViewController {
+class EntranceVC: UIViewController {
     
     var childControllers: [UIViewController] = []
     let containerView = UIView()
-    let pages = ["Sign In", "Sign Up"]
+    let pages = [R.string.localizable.signInButton(), R.string.localizable.signUpButton()]
     let segment = UISegmentedControl()
     
     init() {
@@ -68,8 +67,7 @@ class EntranceVC: FormViewController {
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }
-        
-        containerView.backgroundColor = .green
+    
         self.view.addSubview(containerView)
         containerView.snp.makeConstraints{ make -> Void in
             make.top.equalTo(segment.snp.bottom).offset(10)

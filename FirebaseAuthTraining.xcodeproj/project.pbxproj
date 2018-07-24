@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C02855D210628E000CEB8FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C02855C210628E000CEB8FC /* Localizable.strings */; };
 		7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */; };
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
 		7C0D21F62104E0B300EDB99D /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F52104E0B300EDB99D /* EntranceVM.swift */; };
+		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
+		7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */; };
+		7C6056712107AE39008CF278 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056702107AE39008CF278 /* UIViewController.swift */; };
+		7C6056732107B645008CF278 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056722107B645008CF278 /* RoundedButton.swift */; };
+		7C60567B2107C3EB008CF278 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60567A2107C3EB008CF278 /* R.generated.swift */; };
 		7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE05E2104C34100DA1D50 /* AppDelegate.swift */; };
 		7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE0602104C34100DA1D50 /* SignInVC.swift */; };
 		7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0652104C34200DA1D50 /* Assets.xcassets */; };
@@ -19,9 +25,15 @@
 
 /* Begin PBXFileReference section */
 		52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.debug.xcconfig"; sourceTree = "<group>"; };
+		7C02855C210628E000CEB8FC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
 		7C0D21F52104E0B300EDB99D /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
+		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		7C6056702107AE39008CF278 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		7C6056722107B645008CF278 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		7C60567A2107C3EB008CF278 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7C9AE05B2104C34100DA1D50 /* FirebaseAuthTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseAuthTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9AE05E2104C34100DA1D50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C9AE0602104C34100DA1D50 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -44,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C0285592106264B00CEB8FC /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				7CDCF2332106015F00295D6F /* localizable */,
+				7C9AE0652104C34200DA1D50 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		7C0D21F42104D03100EDB99D /* Entrance */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +79,21 @@
 		7C2E20592104C91300407EE9 /* UserStory */ = {
 			isa = PBXGroup;
 			children = (
+				7C9AE0672104C34200DA1D50 /* LaunchScreen.storyboard */,
 				7C0D21F42104D03100EDB99D /* Entrance */,
 			);
 			path = UserStory;
+			sourceTree = "<group>";
+		};
+		7C6056692107A6BD008CF278 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C60566A2107A6D5008CF278 /* AppColors.swift */,
+				7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */,
+				7C6056702107AE39008CF278 /* UIViewController.swift */,
+				7C6056722107B645008CF278 /* RoundedButton.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7C9AE0522104C34100DA1D50 = {
@@ -84,13 +117,22 @@
 		7C9AE05D2104C34100DA1D50 /* FirebaseAuthTraining */ = {
 			isa = PBXGroup;
 			children = (
+				7C6056692107A6BD008CF278 /* Extensions */,
+				7C0285592106264B00CEB8FC /* Resourses */,
 				7C2E20592104C91300407EE9 /* UserStory */,
 				7C9AE05E2104C34100DA1D50 /* AppDelegate.swift */,
-				7C9AE0652104C34200DA1D50 /* Assets.xcassets */,
-				7C9AE0672104C34200DA1D50 /* LaunchScreen.storyboard */,
 				7C9AE06A2104C34200DA1D50 /* Info.plist */,
 			);
 			path = FirebaseAuthTraining;
+			sourceTree = "<group>";
+		};
+		7CDCF2332106015F00295D6F /* localizable */ = {
+			isa = PBXGroup;
+			children = (
+				7C02855C210628E000CEB8FC /* Localizable.strings */,
+				7C60567A2107C3EB008CF278 /* R.generated.swift */,
+			);
+			path = localizable;
 			sourceTree = "<group>";
 		};
 		84FCD57B9C359E304FE62577 /* Frameworks */ = {
@@ -118,6 +160,7 @@
 			buildConfigurationList = 7C9AE06D2104C34200DA1D50 /* Build configuration list for PBXNativeTarget "FirebaseAuthTraining" */;
 			buildPhases = (
 				033B1AF6D60F0B5ABD7ECF6E /* [CP] Check Pods Manifest.lock */,
+				7C0285562106222C00CEB8FC /* ShellScript */,
 				7C9AE0572104C34100DA1D50 /* Sources */,
 				7C9AE0582104C34100DA1D50 /* Frameworks */,
 				7C9AE0592104C34100DA1D50 /* Resources */,
@@ -171,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C9AE0692104C34200DA1D50 /* LaunchScreen.storyboard in Resources */,
+				7C02855D210628E000CEB8FC /* Localizable.strings in Resources */,
 				7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +250,9 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -214,13 +260,28 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7C0285562106222C00CEB8FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -230,9 +291,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0D21F62104E0B300EDB99D /* EntranceVM.swift in Sources */,
+				7C6056732107B645008CF278 /* RoundedButton.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
+				7C6056712107AE39008CF278 /* UIViewController.swift in Sources */,
 				7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,
+				7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */,
+				7C60567B2107C3EB008CF278 /* R.generated.swift in Sources */,
+				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -315,6 +382,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -373,7 +441,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -389,7 +460,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

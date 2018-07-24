@@ -6,12 +6,18 @@ PODS:
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
+  - R.swift (4.0.0):
+    - R.swift.Library (~> 4.0.0)
+  - R.swift.Library (4.0.0)
   - Result (3.2.4)
+  - SkyFloatingLabelTextField (3.5.1)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Eureka
   - Moya (~> 11.0)
+  - R.swift
+  - SkyFloatingLabelTextField (~> 3.0)
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
@@ -19,16 +25,22 @@ SPEC REPOS:
     - Alamofire
     - Eureka
     - Moya
+    - R.swift
+    - R.swift.Library
     - Result
+    - SkyFloatingLabelTextField
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   Moya: a725035953bc1c0eb1be505ab903984501d82440
+  R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
+  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 283b2ac39989b25feabd3061f16451811ee8cd2f
+PODFILE CHECKSUM: 03bbec376554cd3ee8e30e09fe0c88bc2f37eedc
 
 COCOAPODS: 1.5.3

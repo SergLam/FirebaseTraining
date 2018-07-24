@@ -10,7 +10,11 @@ target 'FirebaseAuthTraining' do
   # UI
   pod 'Eureka'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
   
   # Networking
   pod 'Moya', '~> 11.0'
+  
+  # General
+  pod 'R.swift'
 end

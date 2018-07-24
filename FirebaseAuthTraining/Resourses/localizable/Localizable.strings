@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  FirebaseAuthTraining
+
+  Created by Serg Liamthev on 7/23/18.
+  Copyright © 2018 SergLam. All rights reserved.
+*/
+
+"entrance.email" = "Email";
+"entrance.password" = "Password";
+"signUp.firstName" = "First Name";
+"signUp.secondName" = "Second Name";
+"signUp.button" = "Sign Up";
+"signIn.button" = "Sign In";
+"signIn.forgotPassword" = "Forgot password?";
+
