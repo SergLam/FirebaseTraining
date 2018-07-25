@@ -49,7 +49,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(firstName)
         firstName.snp.makeConstraints{ (make) -> Void in
-            make.top.equalToSuperview().offset(10)
+        make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -125,7 +125,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(termsAndConditions)
         termsAndConditions.snp.makeConstraints{ (make) -> Void in
-            make.bottom.equalToSuperview().offset(-25)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-25)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
