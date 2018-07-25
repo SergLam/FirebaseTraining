@@ -22,6 +22,7 @@
 		7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */; };
 		7CA4B9DC2108A780007CA0C3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DB2108A780007CA0C3 /* R.generated.swift */; };
 		7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */; };
+		7CA80DA62108CA850056450F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* TopViewController.swift */; };
 		88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7CA4B9DB2108A780007CA0C3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = FirebaseAuthTraining/Resourses/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		7CA80DA52108CA850056450F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
 		E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				7C6056702107AE39008CF278 /* UIViewController.swift */,
 				7C6056722107B645008CF278 /* RoundedButton.swift */,
 				7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */,
+				7CA80DA52108CA850056450F /* TopViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
 				7CA4B9DC2108A780007CA0C3 /* R.generated.swift in Sources */,
 				7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */,
+				7CA80DA62108CA850056450F /* TopViewController.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

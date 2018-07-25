@@ -10,8 +10,9 @@ import UIKit
 import Rswift
 import SnapKit
 import SkyFloatingLabelTextField
+import SafariServices
 
-class SignUpVC: UIViewController, UITextFieldDelegate{
+class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate{
     
     let firstName = SkyFloatingLabelTextField()
     let secondName = SkyFloatingLabelTextField()
@@ -21,6 +22,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate{
     let fieldTags = [1,2,3,4]
     
     let signUpButton = UIButton()
+    
     let termsAndConditions = UILabel()
     
     override func viewDidLoad() {
@@ -116,6 +118,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate{
         termsAndConditions.textColor = UIColor.overcastBlue
         termsAndConditions.font = UIFont.systemFont(ofSize: 14)
         termsAndConditions.highLightLinksInText(links: [R.string.localizable.signUpTerms(), R.string.localizable.signUpPrivacy()])
+        termsAndConditions.isUserInteractionEnabled = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapTermsAndConditionsLabel))
+        termsAndConditions.addGestureRecognizer(tap)
         
         self.view.addSubview(termsAndConditions)
         termsAndConditions.snp.makeConstraints{ (make) -> Void in
@@ -124,7 +130,32 @@ class SignUpVC: UIViewController, UITextFieldDelegate{
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
         }
+    }
+    
+    @objc func tapTermsAndConditionsLabel(){
+        let text = (termsAndConditions.text)!
+        let termsRange = (text as NSString).range(of: R.string.localizable.signUpTerms())
+        let privacyRange = (text as NSString).range(of: R.string.localizable.signUpPrivacy())
         
+        if let gesture = termsAndConditions.gestureRecognizers?[0] as? UITapGestureRecognizer{
+            if gesture.didTapAttributedTextInLabel(label: termsAndConditions, inRange: termsRange) {
+                if let url = URL.init(string: "https://www.google.com/"){
+                    let svc = SFSafariViewController(url: url)
+                    svc.delegate = self
+                    UIApplication.topViewController()?.present(svc, animated: true, completion: nil)
+                }
+            } else if gesture.didTapAttributedTextInLabel(label: termsAndConditions, inRange: privacyRange) {
+                if let url = URL.init(string: "https://github.com/"){
+                    let svc = SFSafariViewController(url: url)
+                    svc.delegate = self
+                    UIApplication.topViewController()?.present(svc, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
