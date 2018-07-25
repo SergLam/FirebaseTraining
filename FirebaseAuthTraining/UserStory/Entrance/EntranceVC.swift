@@ -52,6 +52,7 @@ class EntranceVC: UIViewController {
     }
     
     func configureUI(){
+        self.view.backgroundColor = .cyan
         for (index, page) in pages.enumerated() {
           segment.insertSegment(withTitle: page, at: index, animated: false)
         }

@@ -32,7 +32,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
     
     func configureUI(){
         self.hideKeyboardOnTap()
-        self.view.backgroundColor = UIColor.lightKhaki
+        self.view.backgroundColor = UIColor.offBlue
         
         email.placeholder = R.string.localizable.entranceEmail()
         email.title = R.string.localizable.entranceEmail()
@@ -77,7 +77,8 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         }
         
         forgotPassword.text = R.string.localizable.signInForgotPassword()
-        forgotPassword.textColor = UIColor.offBlue
+        forgotPassword.textColor = UIColor.overcastBlue
+        forgotPassword.font = UIFont.systemFont(ofSize: 14)
         
         self.view.addSubview(forgotPassword)
         forgotPassword.snp.makeConstraints{ (make) -> Void in
@@ -85,10 +86,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
             make.height.equalTo(27)
             make.centerX.equalTo(signInButton.snp.centerX)
         }
-        
-
-       
-        
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
