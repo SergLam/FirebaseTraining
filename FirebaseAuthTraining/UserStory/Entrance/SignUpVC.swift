@@ -110,6 +110,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate{
             make.right.equalToSuperview().offset(-10)
         }
         
+        termsAndConditions.numberOfLines = 2
+        termsAndConditions.text = R.string.localizable.signUpRules()
+        termsAndConditions.textAlignment = .center
+        termsAndConditions.textColor = UIColor.overcastBlue
+        termsAndConditions.font = UIFont.systemFont(ofSize: 14)
+        termsAndConditions.highLightLinksInText(links: [R.string.localizable.signUpTerms(), R.string.localizable.signUpPrivacy()])
+        
+        self.view.addSubview(termsAndConditions)
+        termsAndConditions.snp.makeConstraints{ (make) -> Void in
+            make.bottom.equalToSuperview().offset(-25)
+            make.height.equalTo(46)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+        
     }
     
 }

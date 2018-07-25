@@ -13,6 +13,6 @@
 "signUp.button" = "Sign Up";
 "signIn.button" = "Sign In";
 "signIn.forgotPassword" = "Forgot password?";
-"signUp.rules" = "By signing up, you agree to our Terms & Conditions and Privacy Policy";
+"signUp.rules" = "By signing up, you agree to our\n Terms & Conditions and Privacy Policy";
 "signUp.terms" = "Terms & Conditions";
 "signUp.privacy" = "Privacy Policy";
