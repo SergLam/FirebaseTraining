@@ -28,12 +28,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        configureUI()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureUI()
     }
     
     func configureUI(){
@@ -48,7 +51,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         firstName.setEntranceFieldColors()
         
         self.view.addSubview(firstName)
-        firstName.snp.makeConstraints{ (make) -> Void in
+        firstName.snp.remakeConstraints{ (make) -> Void in
         make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -63,7 +66,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         secondName.setEntranceFieldColors()
         
         self.view.addSubview(secondName)
-        secondName.snp.makeConstraints{ (make) -> Void in
+        secondName.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(firstName.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -78,7 +81,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         email.setEntranceFieldColors()
         
         self.view.addSubview(email)
-        email.snp.makeConstraints{ (make) -> Void in
+        email.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(secondName.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -93,7 +96,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         password.setEntranceFieldColors()
         
         self.view.addSubview(password)
-        password.snp.makeConstraints{ (make) -> Void in
+        password.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(email.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -105,7 +108,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         signUpButton.round(radius: 46/2)
         
         self.view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints{ (make) -> Void in
+        signUpButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(password.snp.bottom).offset(25)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -124,7 +127,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         termsAndConditions.addGestureRecognizer(tap)
         
         self.view.addSubview(termsAndConditions)
-        termsAndConditions.snp.makeConstraints{ (make) -> Void in
+        termsAndConditions.snp.remakeConstraints{ (make) -> Void in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-25)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)

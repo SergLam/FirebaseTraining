@@ -21,13 +21,15 @@ class SignInVC: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        configureUI()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureUI()
     }
     
     func configureUI(){
@@ -42,8 +44,8 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         email.setEntranceFieldColors()
         
         self.view.addSubview(email)
-        email.snp.makeConstraints{ (make) -> Void in
-            make.top.equalToSuperview().offset(10)
+        email.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -57,7 +59,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         password.setEntranceFieldColors()
         
         self.view.addSubview(password)
-        password.snp.makeConstraints{ (make) -> Void in
+        password.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(email.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -69,7 +71,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         signInButton.round(radius: 46/2)
         
         self.view.addSubview(signInButton)
-        signInButton.snp.makeConstraints{ (make) -> Void in
+        signInButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(password.snp.bottom).offset(25)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -81,7 +83,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         forgotPassword.font = UIFont.systemFont(ofSize: 14)
         
         self.view.addSubview(forgotPassword)
-        forgotPassword.snp.makeConstraints{ (make) -> Void in
+        forgotPassword.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(signInButton.snp.bottom).offset(25)
             make.height.equalTo(27)
             make.centerX.equalTo(signInButton.snp.centerX)
