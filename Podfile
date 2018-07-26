@@ -14,7 +14,14 @@ target 'FirebaseAuthTraining' do
   
   # Networking
   pod 'Moya', '~> 11.0'
+  pod 'SwiftyJSON', '~> 4.0'
+  
+  # Firebase
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   
   # General
   pod 'R.swift'
+  pod 'CryptoSwift'
+  
 end
