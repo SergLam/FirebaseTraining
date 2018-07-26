@@ -138,13 +138,48 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         }
     }
     
-   @objc func signUp(){
-        print("Sign Up")
-    viewModel.signUp(email: email.text!, password: password.text!){ completion in
-        if(completion){
-            print("Success")
+    func validateInputs() -> (Bool, String) {
+        let isEmail = viewModel.validateEmail(email: self.email.text)
+        let isPassword = viewModel.validatePassword(pass: self.password.text)
+        let isFirtsName = viewModel.isEmptyString(firstName.text)
+        let isSecondName = viewModel.isEmptyString(secondName.text)
+        let results = [isEmail, isPassword, isFirtsName, isSecondName]
+        let is_success = isEmail && isPassword && isFirtsName && isSecondName
+        switch is_success {
+        case true:
+            return (true, "All OK")
+        case false:
+            for (index, value) in results.enumerated(){
+                switch index{
+                case 0:
+                    return value ? (true, "OK") : (false, "Invalid email")
+                case 1:
+                    return value ? (true, "OK") : (false, "Invalid password")
+                case 2:
+                    return value ? (true, "OK") : (false, "Empry first name")
+                case 3:
+                    return value ? (true, "OK") : (false, "Empry second name")
+                default:
+                    return value ? (true, "OK") : (false, "Invalid parameter")
+                }
+            }
         }
+        return (true, "All OK")
     }
+    
+   @objc func signUp(){
+    let validation = validateInputs()
+    if(validation.0){
+        print("Sign Up")
+        viewModel.signUp(email: email.text!, password: password.text!){ completion in
+            if(completion){
+                print("Success")
+            }
+        }
+    } else {
+        self.showError(error: validation.1)
+    }
+
     }
     
     // MARK: Open bottom likns handler

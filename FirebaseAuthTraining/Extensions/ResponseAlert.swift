@@ -9,10 +9,15 @@
 import UIKit
 import SCLAlertView
 
-extension SCLAlertView{
+extension UIViewController{
     
+    func showError(error: String) {
+        SCLAlertView().showError("Error", subTitle: error, closeButtonTitle: "OK")
+    }
+}
+
+extension SCLAlertView{
     func showResponseError(error: NSError) {
-        SCLAlertView().showError("Error", subTitle: error.localizedDescription) // Error
-//        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+        SCLAlertView().showError("Error", subTitle: error.localizedDescription, closeButtonTitle: "OK")
     }
 }
