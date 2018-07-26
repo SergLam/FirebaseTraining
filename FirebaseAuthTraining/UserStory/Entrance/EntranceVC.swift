@@ -80,11 +80,9 @@ class EntranceVC: UIViewController {
         setViewControllerToView(vc: childControllers[1])
         setViewControllerToView(vc: childControllers[0])
 
-
     }
     
    @objc func changeVisibleVC(sender: UISegmentedControl){
-    print("Clicked \(sender.titleForSegment(at: sender.selectedSegmentIndex)!)")
     switch sender.selectedSegmentIndex {
         // Such approach didn't give memory leaks
     case 0:

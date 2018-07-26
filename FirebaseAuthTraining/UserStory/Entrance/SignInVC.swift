@@ -56,6 +56,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         
         password.placeholder = R.string.localizable.entrancePassword()
         password.title = R.string.localizable.entrancePassword()
+        password.isSecureTextEntry = true
         password.returnKeyType = .done
         password.tag = fieldTags[1]
         password.delegate = self
@@ -72,6 +73,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         signInButton.setTitle(R.string.localizable.signInButton(), for: .normal)
         signInButton.backgroundColor = UIColor.overcastBlue
         signInButton.round(radius: 46/2)
+        signInButton.addTarget(self, action: #selector(self.signIn), for: .touchUpInside)
         
         self.view.addSubview(signInButton)
         signInButton.snp.remakeConstraints{ (make) -> Void in
@@ -93,6 +95,22 @@ class SignInVC: UIViewController, UITextFieldDelegate{
             make.top.equalTo(signInButton.snp.bottom).offset(25)
             make.height.equalTo(27)
             make.centerX.equalTo(signInButton.snp.centerX)
+        }
+    }
+    
+    func validateInputs() -> (Bool, String) {
+        let isEmail = viewModel.validateEmail(email: self.email.text)
+        return isEmail ? (true, "OK") : (false, "Invalid email")
+    }
+    
+    @objc func signIn(){
+        let validation = validateInputs()
+        if(validation.0) {
+            viewModel.signIn(email: email.text!, password: password.text!){ completion in
+                
+            }
+        } else{
+            self.showError(error: validation.1)
         }
     }
     

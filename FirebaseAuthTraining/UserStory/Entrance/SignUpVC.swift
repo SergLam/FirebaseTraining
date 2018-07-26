@@ -92,6 +92,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         password.placeholder = R.string.localizable.entrancePassword()
         password.title = R.string.localizable.entrancePassword()
+        password.isSecureTextEntry = true
         password.returnKeyType = .done
         password.tag = fieldTags[3]
         password.delegate = self
