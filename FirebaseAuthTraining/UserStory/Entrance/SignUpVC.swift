@@ -14,7 +14,7 @@ import SafariServices
 
 class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate{
     
-    let viewModel = SignUpVM()
+    let viewModel = EntranceVM()
     
     let firstName = SkyFloatingLabelTextField()
     let secondName = SkyFloatingLabelTextField()
@@ -179,7 +179,28 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     } else {
         self.showError(error: validation.1)
     }
-
+    }
+    
+    // MARK: TextFields delegate methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let tag = textField.tag
+        switch tag {
+        case fieldTags[0]:
+            secondName.becomeFirstResponder()
+            return true
+        case fieldTags[1]:
+            email.becomeFirstResponder()
+            return true
+        case fieldTags[2]:
+            password.becomeFirstResponder()
+            return true
+        case fieldTags[3]:
+            textField.resignFirstResponder()
+            return true
+        default:
+            return true
+        }
     }
     
     // MARK: Open bottom likns handler

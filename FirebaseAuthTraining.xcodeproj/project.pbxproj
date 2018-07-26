@@ -10,7 +10,6 @@
 		7C02855D210628E000CEB8FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C02855C210628E000CEB8FC /* Localizable.strings */; };
 		7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */; };
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
-		7C0D21F62104E0B300EDB99D /* SignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F52104E0B300EDB99D /* SignInVM.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
 		7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */; };
 		7C6056712107AE39008CF278 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056702107AE39008CF278 /* UIViewController.swift */; };
@@ -18,7 +17,6 @@
 		7C9752982109AEAA00F3251A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9752972109AEAA00F3251A /* UserModel.swift */; };
 		7C97529A2109B1EC00F3251A /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9752992109B1EC00F3251A /* JSONConverter.swift */; };
 		7C97529D2109BABB00F3251A /* OnlineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97529C2109BABB00F3251A /* OnlineProvider.swift */; };
-		7C9752A12109CB7600F3251A /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9752A02109CB7600F3251A /* SignUpVM.swift */; };
 		7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE05E2104C34100DA1D50 /* AppDelegate.swift */; };
 		7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE0602104C34100DA1D50 /* SignInVC.swift */; };
 		7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0652104C34200DA1D50 /* Assets.xcassets */; };
@@ -29,6 +27,7 @@
 		7CA80DA62108CA850056450F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* TopViewController.swift */; };
 		7CB98A332109E4EF0049B00F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */; };
 		7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* ResponseAlert.swift */; };
+		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
 		88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +36,6 @@
 		7C02855C210628E000CEB8FC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
-		7C0D21F52104E0B300EDB99D /* SignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVM.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		7C6056702107AE39008CF278 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +43,6 @@
 		7C9752972109AEAA00F3251A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7C9752992109B1EC00F3251A /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		7C97529C2109BABB00F3251A /* OnlineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineProvider.swift; sourceTree = "<group>"; };
-		7C9752A02109CB7600F3251A /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		7C9AE05B2104C34100DA1D50 /* FirebaseAuthTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseAuthTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9AE05E2104C34100DA1D50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C9AE0602104C34100DA1D50 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -58,6 +55,7 @@
 		7CA80DA52108CA850056450F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CB98A352109E9890049B00F /* ResponseAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAlert.swift; sourceTree = "<group>"; };
+		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
 		D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
 		E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,9 +86,10 @@
 		7C0D21F42104D03100EDB99D /* Entrance */ = {
 			isa = PBXGroup;
 			children = (
-				7C97529F2109BB4600F3251A /* SignUp */,
-				7C97529E2109BB2600F3251A /* SignIn */,
 				7C0D21F22104D00D00EDB99D /* EntranceVC.swift */,
+				7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */,
+				7C9AE0602104C34100DA1D50 /* SignInVC.swift */,
+				7CB98A37210A0C3E0049B00F /* EntranceVM.swift */,
 			);
 			path = Entrance;
 			sourceTree = "<group>";
@@ -118,24 +117,6 @@
 				7C9752972109AEAA00F3251A /* UserModel.swift */,
 			);
 			path = DomainModels;
-			sourceTree = "<group>";
-		};
-		7C97529E2109BB2600F3251A /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				7C9AE0602104C34100DA1D50 /* SignInVC.swift */,
-				7C0D21F52104E0B300EDB99D /* SignInVM.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		7C97529F2109BB4600F3251A /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */,
-				7C9752A02109CB7600F3251A /* SignUpVM.swift */,
-			);
-			path = SignUp;
 			sourceTree = "<group>";
 		};
 		7C9AE0522104C34100DA1D50 = {
@@ -371,9 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */,
-				7C9752A12109CB7600F3251A /* SignUpVM.swift in Sources */,
-				7C0D21F62104E0B300EDB99D /* SignInVM.swift in Sources */,
 				7C6056732107B645008CF278 /* RoundedButton.swift in Sources */,
+				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */,
 				7C6056712107AE39008CF278 /* UIViewController.swift in Sources */,
@@ -529,7 +509,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -545,7 +528,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

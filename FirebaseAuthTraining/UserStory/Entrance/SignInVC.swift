@@ -9,8 +9,11 @@
 import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
+import SCLAlertView
 
 class SignInVC: UIViewController, UITextFieldDelegate{
+    
+    let viewModel = EntranceVM()
     
     let email = SkyFloatingLabelTextField()
     let password = SkyFloatingLabelTextField()
@@ -81,6 +84,9 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         forgotPassword.text = R.string.localizable.signInForgotPassword()
         forgotPassword.textColor = UIColor.overcastBlue
         forgotPassword.font = UIFont.systemFont(ofSize: 14)
+        forgotPassword.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.restorePassword))
+        forgotPassword.addGestureRecognizer(tap)
         
         self.view.addSubview(forgotPassword)
         forgotPassword.snp.remakeConstraints{ (make) -> Void in
@@ -88,8 +94,22 @@ class SignInVC: UIViewController, UITextFieldDelegate{
             make.height.equalTo(27)
             make.centerX.equalTo(signInButton.snp.centerX)
         }
-    
     }
+    
+    @objc func restorePassword(){
+        let alert = SCLAlertView()
+        let textField = alert.addTextField("Email")
+        let button = alert.addButton("Send", backgroundColor: UIColor.offBlue, textColor:  UIColor.black, showTimeout: nil){
+            if let text = textField.text, !text.isEmpty, self.viewModel.validateEmail(email: text){
+                SCLAlertView().showSuccess("Restore password", subTitle: "An email has been sent", closeButtonTitle: "OK")
+            } else {
+                SCLAlertView().showError("Restore password", subTitle: "Invalid email", closeButtonTitle: "OK")
+            }
+        }
+        alert.showInfo("Restore password", subTitle: "Enter your email. We will send instructions to reset password", closeButtonTitle: "Cancel") // Info
+    }
+    
+    // MARK: TextField delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let tag = textField.tag
