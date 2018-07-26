@@ -14,6 +14,8 @@ import SafariServices
 
 class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate{
     
+    let viewModel = SignUpVM()
+    
     let firstName = SkyFloatingLabelTextField()
     let secondName = SkyFloatingLabelTextField()
     let email = SkyFloatingLabelTextField()
@@ -106,6 +108,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         signUpButton.setTitle(R.string.localizable.signUpButton(), for: .normal)
         signUpButton.backgroundColor = UIColor.overcastBlue
         signUpButton.round(radius: 46/2)
+        signUpButton.addTarget(self, action: #selector(self.signUp), for: .touchUpInside)
         
         self.view.addSubview(signUpButton)
         signUpButton.snp.remakeConstraints{ (make) -> Void in
@@ -134,6 +137,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
             make.right.equalToSuperview().offset(-10)
         }
     }
+    
+   @objc func signUp(){
+        print("Sign Up")
+    viewModel.signUp(email: email.text!, password: password.text!){ completion in
+        if(completion){
+            print("Success")
+        }
+    }
+    }
+    
+    // MARK: Open bottom likns handler
     
     @objc func tapTermsAndConditionsLabel(){
         let text = (termsAndConditions.text)!

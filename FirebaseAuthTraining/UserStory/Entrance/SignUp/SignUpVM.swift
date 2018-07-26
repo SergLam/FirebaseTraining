@@ -8,20 +8,26 @@
 
 import Foundation
 import FirebaseAuth
+import SCLAlertView
 
 class SignUpVM {
-    var user: UserModel?
     
-    init(user: UserModel) {
-        self.user = user
-    }
-    
-    func signIn(){
-        if let user = user{
-            Auth.auth().createUser(withEmail: user.email, password: user.password) { (authResult, error) in
-                // ...
+    func signUp(email: String, password: String, completion: @escaping (Bool) -> () ){
+            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                if let firebaseError = error{
+                    SCLAlertView().showResponseError(error: firebaseError as NSError)
+                    completion(false)
+                    return
+                }
+                
+                guard let user = authResult else {
+                    SCLAlertView().showError("Error", subTitle: "Something went wrong")
+                    completion(false)
+                    return
+                }
+                SCLAlertView().showInfo("User created", subTitle: email) // Info
+                completion(true)
             }
-        }
     }
     
 }

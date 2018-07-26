@@ -40,6 +40,7 @@ PODS:
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
   - Result (3.2.4)
+  - SCLAlertView (0.8)
   - SkyFloatingLabelTextField (3.5.1)
   - SnapKit (4.0.0)
   - SwiftyJSON (4.1.0)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Moya (~> 11.0)
   - R.swift
+  - SCLAlertView
   - SkyFloatingLabelTextField (~> 3.0)
   - SnapKit (~> 4.0.0)
   - SwiftyJSON (~> 4.0)
@@ -72,6 +74,7 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - Result
+    - SCLAlertView
     - SkyFloatingLabelTextField
     - SnapKit
     - SwiftyJSON
@@ -92,10 +95,11 @@ SPEC CHECKSUMS:
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: a9f8f508ecfa57fff3e943e7d308c12f87da6474
+PODFILE CHECKSUM: b17e1d283f905b7b81770df5dda50081be016016
 
 COCOAPODS: 1.5.3
