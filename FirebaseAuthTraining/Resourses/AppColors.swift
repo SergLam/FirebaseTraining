@@ -37,4 +37,8 @@ extension UIColor{
     @nonobjc class var offBlue: UIColor{
          return UIColor(red: 79/255, green: 109/255, blue: 76/255, alpha: 1.0)
     }
+    
+    @nonobjc class var facebookLogo: UIColor{
+         return UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1.0)
+    }
 }

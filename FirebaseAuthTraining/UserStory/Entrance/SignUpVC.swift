@@ -11,10 +11,11 @@ import Rswift
 import SnapKit
 import SkyFloatingLabelTextField
 import SafariServices
+import GoogleSignIn
 
-class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate{
+class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate, GIDSignInUIDelegate {
     
-    let viewModel = EntranceVM()
+    let viewModel = EntranceVM.sharedInstance
     
     let firstName = SkyFloatingLabelTextField()
     let secondName = SkyFloatingLabelTextField()
@@ -24,12 +25,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     let fieldTags = [1,2,3,4]
     
     let signUpButton = UIButton()
+    let fbButton = UIButton(type: .custom)
+    let gmailButton = GIDSignInButton()
     
     let termsAndConditions = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        GIDSignIn.sharedInstance().uiDelegate = viewModel
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,6 +81,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         email.placeholder = R.string.localizable.entranceEmail()
         email.title = R.string.localizable.entranceEmail()
+        email.autocapitalizationType = .none
         email.returnKeyType = .next
         email.tag = fieldTags[2]
         email.delegate = self
@@ -119,6 +124,31 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
             make.right.equalToSuperview().offset(-10)
         }
         
+        // Add a custom login button to your app
+        fbButton.backgroundColor = UIColor.facebookLogo
+        fbButton.setTitle("Continue with Facebook", for: .normal)
+        fbButton.setTitleColor(.white, for: .normal)
+        fbButton.round(radius: 46/2)
+        // Handle clicks on the button
+        fbButton.addTarget(self, action: #selector(self.facebookLogin), for: .touchUpInside)
+        let textWidth = "Continue with Facebook".widthOfString(font: fbButton.titleLabel!.font)
+        
+        self.view.addSubview(fbButton)
+        fbButton.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(signUpButton.snp.bottom).offset(25)
+            make.height.equalTo(46)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+        
+        self.view.addSubview(gmailButton)
+        gmailButton.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(fbButton.snp.bottom).offset(25)
+            make.height.equalTo(46)
+            make.width.equalTo(textWidth + 23)
+            make.centerX.equalTo(self.view.center.x)
+        }
+        
         termsAndConditions.numberOfLines = 2
         termsAndConditions.text = R.string.localizable.signUpRules()
         termsAndConditions.textAlignment = .center
@@ -139,37 +169,19 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         }
     }
     
-    func validateInputs() -> (Bool, String) {
-        let isEmail = viewModel.validateEmail(email: self.email.text)
-        let isPassword = viewModel.validatePassword(pass: self.password.text)
-        let isFirtsName = viewModel.isEmptyString(firstName.text)
-        let isSecondName = viewModel.isEmptyString(secondName.text)
-        let results = [isEmail, isPassword, isFirtsName, isSecondName]
-        let is_success = isEmail && isPassword && isFirtsName && isSecondName
-        switch is_success {
-        case true:
-            return (true, "All OK")
-        case false:
-            for (index, value) in results.enumerated(){
-                switch index{
-                case 0:
-                    return value ? (true, "OK") : (false, "Invalid email")
-                case 1:
-                    return value ? (true, "OK") : (false, "Invalid password")
-                case 2:
-                    return value ? (true, "OK") : (false, "Empry first name")
-                case 3:
-                    return value ? (true, "OK") : (false, "Empry second name")
-                default:
-                    return value ? (true, "OK") : (false, "Invalid parameter")
-                }
-            }
-        }
-        return (true, "All OK")
+    // MARK: Facebook login
+    
+    @objc func facebookLogin(){
+       viewModel.signUpViaFB()
     }
     
    @objc func signUp(){
-    let validation = validateInputs()
+    let user = UserModel()
+    user.firstName = self.firstName.text ?? ""
+    user.secondName = self.secondName.text ?? ""
+    user.email = self.email.text ?? ""
+    user.password = self.password.text ?? ""
+    let validation = viewModel.validateInputs(user: user)
     if(validation.0){
         print("Sign Up")
         viewModel.signUp(email: email.text!, password: password.text!){ completion in

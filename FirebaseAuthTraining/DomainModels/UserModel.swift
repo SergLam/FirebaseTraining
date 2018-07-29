@@ -10,8 +10,9 @@ import Foundation
 import SwiftyJSON
 
 final class UserModel: JSONAbleType {
-    var userName: String = ""
-    var userSecondName:String = ""
+    
+    var firstName: String = ""
+    var secondName:String = ""
     var email: String = ""
     var password: String = ""
     

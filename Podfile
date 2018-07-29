@@ -21,6 +21,13 @@ target 'FirebaseAuthTraining' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   
+  # Facebook
+  pod 'FBSDKLoginKit'
+  
+  # Google
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  
   # General
   pod 'R.swift'
   pod 'CryptoSwift'

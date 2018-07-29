@@ -10,20 +10,25 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 import SCLAlertView
+import GoogleSignIn
 
-class SignInVC: UIViewController, UITextFieldDelegate{
+class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     
-    let viewModel = EntranceVM()
+    let viewModel = EntranceVM.sharedInstance
     
     let email = SkyFloatingLabelTextField()
     let password = SkyFloatingLabelTextField()
     let fieldTags = [1,2]
     
     let signInButton = UIButton()
+    let fbButton = UIButton(type: .custom)
+    let gmailButton = GIDSignInButton()
+    
     let forgotPassword = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = viewModel
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,6 +46,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         
         email.placeholder = R.string.localizable.entranceEmail()
         email.title = R.string.localizable.entranceEmail()
+        email.autocapitalizationType = .none
         email.returnKeyType = .next
         email.tag = fieldTags[0]
         email.delegate = self
@@ -83,6 +89,31 @@ class SignInVC: UIViewController, UITextFieldDelegate{
             make.right.equalToSuperview().offset(-10)
         }
         
+        // Add a custom login button to your app
+        fbButton.backgroundColor = UIColor.facebookLogo
+        fbButton.setTitle("Continue with Facebook", for: .normal)
+        fbButton.setTitleColor(.white, for: .normal)
+        fbButton.round(radius: 46/2)
+        // Handle clicks on the button
+        fbButton.addTarget(self, action: #selector(self.facebookLogin), for: .touchUpInside)
+        let textWidth = "Continue with Facebook".widthOfString(font: fbButton.titleLabel!.font)
+        
+        self.view.addSubview(fbButton)
+        fbButton.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(signInButton.snp.bottom).offset(25)
+            make.height.equalTo(46)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+        
+        self.view.addSubview(gmailButton)
+        gmailButton.snp.remakeConstraints{ (make) -> Void in
+            make.top.equalTo(fbButton.snp.bottom).offset(25)
+            make.height.equalTo(46)
+            make.width.equalTo(textWidth + 23)
+            make.centerX.equalTo(self.view.center.x)
+        }
+        
         forgotPassword.text = R.string.localizable.signInForgotPassword()
         forgotPassword.textColor = UIColor.overcastBlue
         forgotPassword.font = UIFont.systemFont(ofSize: 14)
@@ -92,7 +123,7 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         
         self.view.addSubview(forgotPassword)
         forgotPassword.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(signInButton.snp.bottom).offset(25)
+            make.bottom.equalTo(self.view).offset(-25)
             make.height.equalTo(27)
             make.centerX.equalTo(signInButton.snp.centerX)
         }
@@ -114,12 +145,19 @@ class SignInVC: UIViewController, UITextFieldDelegate{
         }
     }
     
+    // MARK: Facebook login
+    
+    @objc func facebookLogin(){
+        viewModel.signUpViaFB()
+    }
+    
     @objc func restorePassword(){
         let alert = SCLAlertView()
         let textField = alert.addTextField("Email")
+        textField.autocapitalizationType = .none
         let button = alert.addButton("Send", backgroundColor: UIColor.offBlue, textColor:  UIColor.black, showTimeout: nil){
             if let text = textField.text, !text.isEmpty, self.viewModel.validateEmail(email: text){
-                SCLAlertView().showSuccess("Restore password", subTitle: "An email has been sent", closeButtonTitle: "OK")
+                self.viewModel.restorePassword(email: text)
             } else {
                 SCLAlertView().showError("Restore password", subTitle: "Invalid email", closeButtonTitle: "OK")
             }
