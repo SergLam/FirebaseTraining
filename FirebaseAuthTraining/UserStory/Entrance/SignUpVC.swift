@@ -143,9 +143,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(gmailButton)
         gmailButton.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(fbButton.snp.bottom).offset(25)
-            make.height.equalTo(46)
-            make.width.equalTo(textWidth + 23)
+            make.top.equalTo(fbButton.snp.bottom).offset(20)
             make.centerX.equalTo(self.view.center.x)
         }
         
@@ -172,7 +170,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     // MARK: Facebook login
     
     @objc func facebookLogin(){
-       viewModel.signUpViaFB()
+        viewModel.signUpViaFB(){ completion in
+            self.present(MainVC(), animated: true, completion: nil)
+        }
     }
     
    @objc func signUp(){
@@ -186,7 +186,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         print("Sign Up")
         viewModel.signUp(email: email.text!, password: password.text!){ completion in
             if(completion){
-                print("Success")
+                self.present(MainVC(), animated: true, completion: nil)
             }
         }
     } else {

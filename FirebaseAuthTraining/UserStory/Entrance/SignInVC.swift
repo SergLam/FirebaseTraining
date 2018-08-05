@@ -108,9 +108,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         
         self.view.addSubview(gmailButton)
         gmailButton.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(fbButton.snp.bottom).offset(25)
-            make.height.equalTo(46)
-            make.width.equalTo(textWidth + 23)
+            make.top.equalTo(fbButton.snp.bottom).offset(20)
             make.centerX.equalTo(self.view.center.x)
         }
         
@@ -138,7 +136,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         let validation = validateInputs()
         if(validation.0) {
             viewModel.signIn(email: email.text!, password: password.text!){ completion in
-                
+                if(completion){
+                    self.present(MainVC(), animated: true, completion: nil)
+                }
             }
         } else{
             self.showError(error: validation.1)
@@ -148,7 +148,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     // MARK: Facebook login
     
     @objc func facebookLogin(){
-        viewModel.signUpViaFB()
+        viewModel.signUpViaFB(){ completion in
+            
+        }
     }
     
     @objc func restorePassword(){

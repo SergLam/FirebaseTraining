@@ -38,13 +38,11 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let firebaseError = error{
                 SCLAlertView().showResponseError(error: firebaseError as NSError)
-                completion(false)
                 return
             }
             
             guard let user = user else {
                 SCLAlertView().showError("Error", subTitle: "Something went wrong")
-                completion(false)
                 return
             }
             SCLAlertView().showInfo("User logined", subTitle: email) // Info
@@ -64,7 +62,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
         }
     }
     
-    func signUpViaFB(){
+    func signUpViaFB(completion: @escaping (Bool) -> ()){
         let loginManager = FBSDKLoginManager()
         let vc = UIApplication.topViewController()!
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc){ (result, error) in
@@ -85,7 +83,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
             }
             // Firebase redirect
             guard let accessToken = FBSDKAccessToken.current() else {
-                print("Failed to get access token")
+                vc.showError(error: "Failed to get access token")
                 return
             }
             
@@ -98,6 +96,8 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     return
                 }
                 vc.showSucces(data: ["user" : authResult?.user.displayName ?? "default_name", "email" : authResult?.user.email ?? "default_email"])
+                ListenerManager.sharedInstance.observeUserProfile(uid: authResult!.user.uid)
+                completion(true)
             }
         }
     }
@@ -147,7 +147,9 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     let familyName = user.profile.familyName ?? "default_family_name"
                     let email = user.profile.email ?? "default_email"
                     let params = ["userId":userId, "fullName": fullName, "givenName": givenName, "familyName": familyName, "email": email]
-                    vc.showSucces(data: params)
+                    //vc.showSucces(data: params)
+                    // TODO: Save user data to key chain
+                    UIApplication.topViewController()!.present(MainVC(), animated: true, completion: nil)
                 }
             }
         }

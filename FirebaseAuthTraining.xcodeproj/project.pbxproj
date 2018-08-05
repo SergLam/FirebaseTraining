@@ -10,11 +10,18 @@
 		7C02855D210628E000CEB8FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C02855C210628E000CEB8FC /* Localizable.strings */; };
 		7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */; };
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
+		7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE77421147DC60069C080 /* ListenerManager.swift */; };
+		7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE7792114A4490069C080 /* MainVC.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
 		7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */; };
 		7C6056712107AE39008CF278 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056702107AE39008CF278 /* UIViewController.swift */; };
 		7C6056732107B645008CF278 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056722107B645008CF278 /* RoundedButton.swift */; };
 		7C65E482210DB74700BAE570 /* StringParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C65E481210DB74700BAE570 /* StringParams.swift */; };
+		7C91F5AE2116F78600551719 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5AD2116F78600551719 /* MapVC.swift */; };
+		7C91F5B02116F7D500551719 /* ChatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5AF2116F7D500551719 /* ChatsVC.swift */; };
+		7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5B12116F7EC00551719 /* UsersVC.swift */; };
+		7C91F5B42116F80100551719 /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5B32116F80100551719 /* MyProfileVC.swift */; };
+		7C91F5B8211710E200551719 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5B7211710E100551719 /* R.generated.swift */; };
 		7C9752982109AEAA00F3251A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9752972109AEAA00F3251A /* UserModel.swift */; };
 		7C97529A2109B1EC00F3251A /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9752992109B1EC00F3251A /* JSONConverter.swift */; };
 		7C97529D2109BABB00F3251A /* OnlineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97529C2109BABB00F3251A /* OnlineProvider.swift */; };
@@ -23,9 +30,8 @@
 		7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0652104C34200DA1D50 /* Assets.xcassets */; };
 		7C9AE0692104C34200DA1D50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0672104C34200DA1D50 /* LaunchScreen.storyboard */; };
 		7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */; };
-		7CA4B9DC2108A780007CA0C3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DB2108A780007CA0C3 /* R.generated.swift */; };
 		7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */; };
-		7CA80DA62108CA850056450F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* TopViewController.swift */; };
+		7CA80DA62108CA850056450F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* ViewController.swift */; };
 		7CB98A332109E4EF0049B00F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */; };
 		7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* ResponseAlert.swift */; };
 		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
@@ -37,11 +43,18 @@
 		7C02855C210628E000CEB8FC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
+		7C3DE77421147DC60069C080 /* ListenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerManager.swift; sourceTree = "<group>"; };
+		7C3DE7792114A4490069C080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		7C6056702107AE39008CF278 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7C6056722107B645008CF278 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		7C65E481210DB74700BAE570 /* StringParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringParams.swift; sourceTree = "<group>"; };
+		7C91F5AD2116F78600551719 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		7C91F5AF2116F7D500551719 /* ChatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsVC.swift; sourceTree = "<group>"; };
+		7C91F5B12116F7EC00551719 /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		7C91F5B32116F80100551719 /* MyProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
+		7C91F5B7211710E100551719 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7C9752972109AEAA00F3251A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7C9752992109B1EC00F3251A /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		7C97529C2109BABB00F3251A /* OnlineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineProvider.swift; sourceTree = "<group>"; };
@@ -52,9 +65,8 @@
 		7C9AE0682104C34200DA1D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C9AE06A2104C34200DA1D50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		7CA4B9DB2108A780007CA0C3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = FirebaseAuthTraining/Resourses/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		7CA80DA52108CA850056450F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		7CA80DA52108CA850056450F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CB98A352109E9890049B00F /* ResponseAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAlert.swift; sourceTree = "<group>"; };
 		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
@@ -78,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				7C60566A2107A6D5008CF278 /* AppColors.swift */,
+				7C91F5B7211710E100551719 /* R.generated.swift */,
 				7C9AE0652104C34200DA1D50 /* Assets.xcassets */,
-				7CA4B9DB2108A780007CA0C3 /* R.generated.swift */,
 				7CDCF2332106015F00295D6F /* localizable */,
 			);
 			path = Resourses;
@@ -99,9 +111,30 @@
 		7C2E20592104C91300407EE9 /* UserStory */ = {
 			isa = PBXGroup;
 			children = (
+				7C3DE7782114A4080069C080 /* Main */,
 				7C0D21F42104D03100EDB99D /* Entrance */,
+				7C91F5AD2116F78600551719 /* MapVC.swift */,
+				7C91F5AF2116F7D500551719 /* ChatsVC.swift */,
+				7C91F5B12116F7EC00551719 /* UsersVC.swift */,
+				7C91F5B32116F80100551719 /* MyProfileVC.swift */,
 			);
 			path = UserStory;
+			sourceTree = "<group>";
+		};
+		7C3DE77321147D9C0069C080 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				7C3DE77421147DC60069C080 /* ListenerManager.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		7C3DE7782114A4080069C080 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7C3DE7792114A4490069C080 /* MainVC.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		7C6056692107A6BD008CF278 /* Extensions */ = {
@@ -159,6 +192,7 @@
 		7CA4B9D62108A6C3007CA0C3 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				7C3DE77321147D9C0069C080 /* Firestore */,
 				7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */,
 				7C9752992109B1EC00F3251A /* JSONConverter.swift */,
 				7C97529C2109BABB00F3251A /* OnlineProvider.swift */,
@@ -169,7 +203,7 @@
 		7CB98A342109E8F00049B00F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7CA80DA52108CA850056450F /* TopViewController.swift */,
+				7CA80DA52108CA850056450F /* ViewController.swift */,
 				7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */,
 				7C6056722107B645008CF278 /* RoundedButton.swift */,
 				7C6056702107AE39008CF278 /* UIViewController.swift */,
@@ -302,40 +336,62 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,10 +406,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,20 +442,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */,
+				7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */,
 				7C6056732107B645008CF278 /* RoundedButton.swift in Sources */,
 				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
+				7C91F5AE2116F78600551719 /* MapVC.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */,
+				7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */,
 				7C6056712107AE39008CF278 /* UIViewController.swift in Sources */,
 				7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */,
 				7C9752982109AEAA00F3251A /* UserModel.swift in Sources */,
+				7C91F5B8211710E200551719 /* R.generated.swift in Sources */,
+				7C91F5B02116F7D500551719 /* ChatsVC.swift in Sources */,
+				7C91F5B42116F80100551719 /* MyProfileVC.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,
 				7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */,
 				7C65E482210DB74700BAE570 /* StringParams.swift in Sources */,
 				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
-				7CA4B9DC2108A780007CA0C3 /* R.generated.swift in Sources */,
+				7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */,
 				7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */,
-				7CA80DA62108CA850056450F /* TopViewController.swift in Sources */,
+				7CA80DA62108CA850056450F /* ViewController.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,
 				7C97529A2109B1EC00F3251A /* JSONConverter.swift in Sources */,
 				7C97529D2109BABB00F3251A /* OnlineProvider.swift in Sources */,
@@ -540,10 +606,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -559,10 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = serglam.FirebaseAuthTraining;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

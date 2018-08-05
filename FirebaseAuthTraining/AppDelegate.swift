@@ -11,11 +11,14 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var window: UIWindow?
+    
+    static let sharedFirestore = Firestore.firestore()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = EntranceVM.sharedInstance
+        // Configure GoogleMaps
+        GMSServices.provideAPIKey("AIzaSyB_5wVoooWHGq75sNSK1RQP7dPBW60beDY")
+        
         // Configure facebook login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

@@ -12,21 +12,35 @@ target 'FirebaseAuthTraining' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'SCLAlertView'
+  pod 'ESTabBarController-swift'
+  
+  # RxSwift
+  pod 'RxSwift',    '~> 4.0'
+  pod 'RxCocoa',    '~> 4.0'
   
   # Networking
   pod 'Moya', '~> 11.0'
   pod 'SwiftyJSON', '~> 4.0'
   
   # Firebase
-  pod 'Firebase/Core'
+  pod 'Firebase'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'FirebaseMessaging'
   
   # Facebook
   pod 'FBSDKLoginKit'
   
-  # Google
+  # Google OAuth
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  
+  # Google Maps
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
   
   # General
   pod 'R.swift'
