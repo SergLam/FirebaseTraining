@@ -10,14 +10,19 @@ import UIKit
 
 class UsersVC: UIViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         configureUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.hideNavBar(false)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
+    
     
     func configureUI(){
         self.hideNavBar(true)
