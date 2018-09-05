@@ -12,11 +12,11 @@ class UsersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideNavBar(true)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +25,5 @@ class UsersVC: UIViewController {
     
     
     func configureUI(){
-        self.hideNavBar(true)
     }
 }

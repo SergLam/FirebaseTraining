@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = EntranceVM.sharedInstance
         // Configure GoogleMaps
-        GMSServices.provideAPIKey("AIzaSyB_5wVoooWHGq75sNSK1RQP7dPBW60beDY")
+        GMSServices.provideAPIKey("AIzaSyCA1t8DtFDxTAxe8akmJi_sBiG6u3V_LLw")
         
         // Configure facebook login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

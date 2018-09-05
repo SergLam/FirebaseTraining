@@ -17,6 +17,7 @@ class MyProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideNavBar(false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,13 +30,17 @@ class MyProfileVC: UIViewController {
     }
     
     func configureUI(){
-        self.hideNavBar(false)
         self.navigationItem.title = "My profile"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProfile))
         self.view.addSubview(profileImage)
         profileImage.image = R.image.profile_tab()
         profileImage.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
+            } else {
+                // Fallback on earlier versions
+                make.top.equalTo(view.snp.topMargin).offset(20)
+            }
             make.height.equalTo(80)
             make.width.equalTo(80)
             make.centerX.equalTo(self.view.center.x)

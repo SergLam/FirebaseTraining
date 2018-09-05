@@ -47,6 +47,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         email.placeholder = R.string.localizable.entranceEmail()
         email.title = R.string.localizable.entranceEmail()
         email.autocapitalizationType = .none
+        email.keyboardType = .emailAddress
         email.returnKeyType = .next
         email.tag = fieldTags[0]
         email.delegate = self
@@ -54,7 +55,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         
         self.view.addSubview(email)
         email.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            } else {
+                // Fallback on earlier versions
+                make.top.equalTo(view.snp.topMargin).offset(10)
+            }
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -137,7 +143,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         if(validation.0) {
             viewModel.signIn(email: email.text!, password: password.text!){ completion in
                 if(completion){
-                    self.present(MainVC(), animated: true, completion: nil)
+                    self.view.window?.rootViewController?.present(MainVC(), animated: true, completion: nil)
                 }
             }
         } else{
@@ -149,7 +155,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     
     @objc func facebookLogin(){
         viewModel.signUpViaFB(){ completion in
-            
+            if(completion){
+                self.present(MainVC(), animated: true, completion: nil)
+            }
         }
     }
     
@@ -157,7 +165,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         let alert = SCLAlertView()
         let textField = alert.addTextField("Email")
         textField.autocapitalizationType = .none
-        let button = alert.addButton("Send", backgroundColor: UIColor.offBlue, textColor:  UIColor.black, showTimeout: nil){
+        alert.addButton("Send", backgroundColor: UIColor.offBlue, textColor:  UIColor.black, showTimeout: nil){
             if let text = textField.text, !text.isEmpty, self.viewModel.validateEmail(email: text){
                 self.viewModel.restorePassword(email: text)
             } else {

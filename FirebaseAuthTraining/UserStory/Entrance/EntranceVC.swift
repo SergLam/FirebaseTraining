@@ -64,7 +64,11 @@ class EntranceVC: UIViewController {
         self.view.addSubview(segment)
         segment.snp.makeConstraints{ (make) -> Void in
             make.height.equalTo(30)
-        make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            } else {
+                make.top.equalTo(view.snp.topMargin).offset(20)
+            }
             make.left.equalTo(self.view).offset(10)
             make.right.equalTo(self.view).offset(-10)
         }

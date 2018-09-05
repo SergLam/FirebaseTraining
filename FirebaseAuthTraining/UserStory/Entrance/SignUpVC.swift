@@ -58,7 +58,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(firstName)
         firstName.snp.remakeConstraints{ (make) -> Void in
-        make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
+            } else {
+                // Fallback on earlier versions
+                make.top.equalTo(view.snp.topMargin).offset(10)
+            }
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -82,6 +87,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         email.placeholder = R.string.localizable.entranceEmail()
         email.title = R.string.localizable.entranceEmail()
         email.autocapitalizationType = .none
+        email.keyboardType = .emailAddress
         email.returnKeyType = .next
         email.tag = fieldTags[2]
         email.delegate = self
@@ -160,7 +166,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(termsAndConditions)
         termsAndConditions.snp.remakeConstraints{ (make) -> Void in
+            if #available(iOS 11.0, *) {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-25)
+            } else {
+                make.bottom.equalTo(view.snp.bottomMargin).offset(-25)
+            }
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)

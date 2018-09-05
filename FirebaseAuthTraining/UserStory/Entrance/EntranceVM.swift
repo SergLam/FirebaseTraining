@@ -23,13 +23,11 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 completion(false)
                 return
             }
-            
-            guard let user = authResult else {
+            guard authResult != nil else {
                 SCLAlertView().showError("Error", subTitle: "Something went wrong")
                 completion(false)
                 return
             }
-            SCLAlertView().showInfo("User created", subTitle: email) // Info
             completion(true)
         }
     }
@@ -41,11 +39,10 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 return
             }
             
-            guard let user = user else {
+            guard user != nil else {
                 SCLAlertView().showError("Error", subTitle: "Something went wrong")
                 return
             }
-            SCLAlertView().showInfo("User logined", subTitle: email) // Info
             completion(true)
         }
     }
@@ -95,8 +92,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     vc.showError(error: "Firebase Autorization error")
                     return
                 }
-                vc.showSucces(data: ["user" : authResult?.user.displayName ?? "default_name", "email" : authResult?.user.email ?? "default_email"])
-                ListenerManager.sharedInstance.observeUserProfile(uid: authResult!.user.uid)
+                //                ListenerManager.sharedInstance.observeUserProfile(uid: authResult!.user.uid)
                 completion(true)
             }
         }
@@ -114,14 +110,14 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!,
               present viewController: UIViewController!) {
         print("present")
-        viewController.present(viewController, animated: true, completion: nil)
+        UIApplication.topViewController()!.present(viewController, animated: true, completion: nil)
     }
     
     // Dismiss the "Sign in with Google" view
     func sign(_ signIn: GIDSignIn!,
               dismiss viewController: UIViewController!) {
         print("dismiss")
-        viewController.dismiss(animated: true, completion: nil)
+        UIApplication.topViewController()!.dismiss(animated: true, completion: nil)
     }
     
     // MARK: GIDSignIn.sharedInstance().delegate methods
@@ -149,7 +145,10 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     let params = ["userId":userId, "fullName": fullName, "givenName": givenName, "familyName": familyName, "email": email]
                     //vc.showSucces(data: params)
                     // TODO: Save user data to key chain
-                    UIApplication.topViewController()!.present(MainVC(), animated: true, completion: nil)
+                    print("Show main")
+                    if let rootVC = UIApplication.topViewController(){
+                        rootVC.present(MainVC(), animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -205,29 +204,25 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
             return (true, "All OK")
         case false:
             for (index, value) in results.enumerated(){
-                switch index{
-                case 0:
-                    if(value == false){
+                if(value){
+                    continue
+                } else {
+                    switch index{
+                    case 0:
                         return (false, "Invalid email")
-                    }
-                case 1:
-                    if(value == false){
+                    case 1:
                         return (false, "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols")
-                    }
-                case 2:
-                    if(value == false){
+                    case 2:
                         return (false, "Empry first name")
-                    }
-                case 3:
-                    if(value == false){
+                    case 3:
                         return (false, "Empry second name")
+                    default:
+                        break
                     }
-                default:
-                    break
                 }
             }
         }
         return (true, "All OK")
     }
-        
+    
 }

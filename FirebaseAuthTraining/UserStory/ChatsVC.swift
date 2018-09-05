@@ -12,6 +12,7 @@ class ChatsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideNavBar(true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -25,6 +26,5 @@ class ChatsVC: UIViewController {
     
     
     func configureUI(){
-        self.hideNavBar(true)
     }
 }

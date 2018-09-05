@@ -11,15 +11,14 @@ import GoogleMaps
 
 class MapVC: UIViewController {
     
-    var zoomButtons: ZoomButtonsView? = nil
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideNavBar(true)
+        configureMap()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,8 +26,7 @@ class MapVC: UIViewController {
     }
     
     func configureUI(){
-        self.hideNavBar(true)
-        configureMap()
+
     }
     
     func configureMap(){
@@ -39,12 +37,7 @@ class MapVC: UIViewController {
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = true
         mapView.settings.zoomGestures = true
-        let tabBarHeight = self.navigationController?.navigationBar.frame.height ?? 0
-        zoomButtons = ZoomButtonsView.init(frame: CGRect(x: -150 , y: self.view.bounds.height - tabBarHeight - self.view.bounds.height/15 - 70, width: 40, height: 70))
-        mapView.addSubview(zoomButtons!)
         self.view = mapView
-        
-        
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
