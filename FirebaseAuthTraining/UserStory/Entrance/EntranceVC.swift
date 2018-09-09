@@ -28,8 +28,8 @@ class EntranceVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let signInVC = SignInVC()
-        let signUpVC = SignUpVC()
+        let signInVC = SignInVC(parent: self)
+        let signUpVC = SignUpVC(parent: self)
         
         childControllers.append(contentsOf: [signInVC, signUpVC])
         
@@ -103,6 +103,10 @@ class EntranceVC: UIViewController {
     func setViewControllerToView(vc: UIViewController){
         vc.view.frame = self.containerView.bounds
         self.containerView.addSubview(vc.view)
+    }
+    
+    func showMainVC(){
+        self.present(MainVC(), animated: true, completion: nil)
     }
     
 }

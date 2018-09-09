@@ -14,6 +14,7 @@ import GoogleSignIn
 
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     
+    var parentVC: EntranceVC?
     let viewModel = EntranceVM.sharedInstance
     
     let email = SkyFloatingLabelTextField()
@@ -25,6 +26,11 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     let gmailButton = GIDSignInButton()
     
     let forgotPassword = UILabel()
+    
+    convenience init(parent: EntranceVC){
+        self.init(nibName:nil, bundle:nil)
+        self.parentVC = parent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +149,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         if(validation.0) {
             viewModel.signIn(email: email.text!, password: password.text!){ completion in
                 if(completion){
-                    self.view.window?.rootViewController?.present(MainVC(), animated: true, completion: nil)
+                    self.parentVC?.showMainVC()
                 }
             }
         } else{
@@ -152,11 +158,10 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     }
     
     // MARK: Facebook login
-    
     @objc func facebookLogin(){
         viewModel.signUpViaFB(){ completion in
             if(completion){
-                self.present(MainVC(), animated: true, completion: nil)
+                self.parentVC?.showMainVC()
             }
         }
     }

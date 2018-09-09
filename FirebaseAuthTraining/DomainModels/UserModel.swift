@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-final class UserModel: JSONAbleType {
+public class UserModel: NSObject {
     
     var firstName: String = ""
     var secondName:String = ""

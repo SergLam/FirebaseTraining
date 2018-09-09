@@ -16,6 +16,8 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     
     static let sharedInstance = EntranceVM()
     
+    let defaults = UserDefaults.standard
+    
     func signUp(email: String, password: String, completion: @escaping (Bool) -> () ){
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let firebaseError = error{
@@ -28,6 +30,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 completion(false)
                 return
             }
+            self.defaults.set(email, forKey: "email")
             completion(true)
         }
     }
@@ -43,6 +46,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 SCLAlertView().showError("Error", subTitle: "Something went wrong")
                 return
             }
+            self.defaults.set(email, forKey: "email")
             completion(true)
         }
     }
@@ -92,6 +96,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     vc.showError(error: "Firebase Autorization error")
                     return
                 }
+                self.defaults.set(authResult!.user.email!, forKey: "email")
                 //                ListenerManager.sharedInstance.observeUserProfile(uid: authResult!.user.uid)
                 completion(true)
             }
@@ -143,8 +148,8 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     let familyName = user.profile.familyName ?? "default_family_name"
                     let email = user.profile.email ?? "default_email"
                     let params = ["userId":userId, "fullName": fullName, "givenName": givenName, "familyName": familyName, "email": email]
-                    //vc.showSucces(data: params)
                     // TODO: Save user data to key chain
+                    self.defaults.set(user.profile.email, forKey: "email")
                     print("Show main")
                     if let rootVC = UIApplication.topViewController(){
                         rootVC.present(MainVC(), animated: true, completion: nil)

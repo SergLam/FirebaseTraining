@@ -12,6 +12,8 @@ import SnapKit
 
 class MyProfileVC: UIViewController {
     
+    let viewModel = MyProfileVM()
+    
     let profileImage: UIImageView = UIImageView()
     let userName: UILabel = UILabel()
     
@@ -27,6 +29,7 @@ class MyProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.loadProfile()
     }
     
     func configureUI(){
@@ -39,7 +42,7 @@ class MyProfileVC: UIViewController {
                 make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
             } else {
                 // Fallback on earlier versions
-                make.top.equalTo(view.snp.topMargin).offset(20)
+            make.top.equalTo(view.snp.topMargin).offset((self.navigationController?.navigationBar.frame.size.height)! + 20)
             }
             make.height.equalTo(80)
             make.width.equalTo(80)

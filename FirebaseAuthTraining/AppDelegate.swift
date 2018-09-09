@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -28,12 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Setup our initialViewController
         window?.rootViewController = EntranceVC()
         
-        // Configure Firebase, Google sign in
+        // Configure Firebase
         FirebaseApp.configure()
+        
+        // Configure Google sign in
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = EntranceVM.sharedInstance
-        // Configure GoogleMaps
+        
+        // Configure GoogleMaps + GooglePlaces
         GMSServices.provideAPIKey("AIzaSyCA1t8DtFDxTAxe8akmJi_sBiG6u3V_LLw")
+        GMSPlacesClient.provideAPIKey("AIzaSyCA1t8DtFDxTAxe8akmJi_sBiG6u3V_LLw")
         
         // Configure facebook login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

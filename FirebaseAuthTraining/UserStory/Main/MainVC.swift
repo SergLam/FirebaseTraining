@@ -19,9 +19,13 @@ class MainVC: ESTabBarController {
     
     let myProfileVC = MyProfileVC()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureUI()
     }
     
     func configureUI(){
@@ -36,5 +40,6 @@ class MainVC: ESTabBarController {
         let controllers = [mapVC, chatsVC, usersVC, myProfileVC]
         self.tabBar.isTranslucent = false
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
+        self.selectedIndex = 3
     }
 }
