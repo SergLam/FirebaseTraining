@@ -11,8 +11,11 @@ import SCLAlertView
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import Moya
 
 class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    let provider = MoyaProvider<FirebaseAPI>()
     
     static let sharedInstance = EntranceVM()
     
@@ -41,11 +44,11 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 SCLAlertView().showResponseError(error: firebaseError as NSError)
                 return
             }
-            
-            guard user != nil else {
+            guard let ready_user = user else {
                 SCLAlertView().showError("Error", subTitle: "Something went wrong")
                 return
             }
+            print(ready_user.user)
             self.defaults.set(email, forKey: "email")
             completion(true)
         }
@@ -141,16 +144,10 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                     return
                 } else {
                     // Perform any operations on signed in user here.
-                    let userId = user.userID ?? "default_id"                  // For client-side use only!
-                    let idToken = user.authentication.idToken ?? "default_token"// Safe to send to the server
-                    let fullName = user.profile.name ?? "default_token"
-                    let givenName = user.profile.givenName ?? "default_given_name"
-                    let familyName = user.profile.familyName ?? "default_family_name"
-                    let email = user.profile.email ?? "default_email"
-                    let params = ["userId":userId, "fullName": fullName, "givenName": givenName, "familyName": familyName, "email": email]
+                    let userId = user.userID ?? "default_id"
+                    // For client-side use only!
                     // TODO: Save user data to key chain
                     self.defaults.set(user.profile.email, forKey: "email")
-                    print("Show main")
                     if let rootVC = UIApplication.topViewController(){
                         rootVC.present(MainVC(), animated: true, completion: nil)
                     }
@@ -201,7 +198,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
         let isEmail = self.validateEmail(email: user.email)
         let isPassword = self.validatePassword(pass: user.password)
         let isFirtsName = self.isEmptyString(user.firstName)
-        let isSecondName = self.isEmptyString(user.secondName)
+        let isSecondName = self.isEmptyString(user.lastName)
         let results = [isEmail, isPassword, isFirtsName, isSecondName]
         let is_success = isEmail && isPassword && isFirtsName && isSecondName
         switch is_success {

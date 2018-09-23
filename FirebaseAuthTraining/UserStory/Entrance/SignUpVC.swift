@@ -18,8 +18,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     var parentVC: EntranceVC?
     let viewModel = EntranceVM.sharedInstance
     
+    let user = UserModel()
+    
     let firstName = SkyFloatingLabelTextField()
-    let secondName = SkyFloatingLabelTextField()
+    let lastName = SkyFloatingLabelTextField()
     let email = SkyFloatingLabelTextField()
     let password = SkyFloatingLabelTextField()
     
@@ -75,15 +77,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
             make.right.equalToSuperview().offset(-10)
         }
         
-        secondName.placeholder = R.string.localizable.signUpSecondName()
-        secondName.title = R.string.localizable.signUpSecondName()
-        secondName.returnKeyType = .next
-        secondName.tag = fieldTags[1]
-        secondName.delegate = self
-        secondName.setEntranceFieldColors()
+        lastName.placeholder = R.string.localizable.signUpSecondName()
+        lastName.title = R.string.localizable.signUpSecondName()
+        lastName.returnKeyType = .next
+        lastName.tag = fieldTags[1]
+        lastName.delegate = self
+        lastName.setEntranceFieldColors()
         
-        self.view.addSubview(secondName)
-        secondName.snp.remakeConstraints{ (make) -> Void in
+        self.view.addSubview(lastName)
+        lastName.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(firstName.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
@@ -101,7 +103,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         
         self.view.addSubview(email)
         email.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(secondName.snp.bottom).offset(10)
+            make.top.equalTo(lastName.snp.bottom).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -192,9 +194,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
     }
     
    @objc func signUp(){
-    let user = UserModel()
     user.firstName = self.firstName.text ?? ""
-    user.secondName = self.secondName.text ?? ""
+    user.lastName = self.lastName.text ?? ""
     user.email = self.email.text ?? ""
     user.password = self.password.text ?? ""
     let validation = viewModel.validateInputs(user: user)
@@ -216,7 +217,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         let tag = textField.tag
         switch tag {
         case fieldTags[0]:
-            secondName.becomeFirstResponder()
+            lastName.becomeFirstResponder()
             return true
         case fieldTags[1]:
             email.becomeFirstResponder()

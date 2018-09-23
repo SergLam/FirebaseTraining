@@ -63,6 +63,8 @@
 	<string>Your location will be shown to other users</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Your location will be shown to other users</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location will be shown to other users</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

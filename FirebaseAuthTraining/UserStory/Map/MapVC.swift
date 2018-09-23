@@ -54,7 +54,7 @@ class MapVC: UIViewController {
         mapView.settings.zoomGestures = true
         mapView.isMyLocationEnabled = true
         // Because tab bar overlap my location button
-        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: self.tabBarController!.tabBar.frame.size.height, right: 0)
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapView)
         mapView.isHidden = true

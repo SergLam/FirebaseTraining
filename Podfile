@@ -24,10 +24,11 @@ target 'FirebaseAuthTraining' do
   
   # Firebase
   pod 'Firebase'
-  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
   pod 'Firebase/Firestore'
-  pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
   pod 'Firebase/Storage'
   
   # Facebook

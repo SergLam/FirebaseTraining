@@ -45,4 +45,8 @@ extension UIColor{
     @nonobjc class var googleMapsButtons: UIColor{
         return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
     }
+    
+    @nonobjc class var tableDefaultColor: UIColor{
+        return UIColor(red: 232/255, green: 233/255, blue: 237/255, alpha: 1)
+    }
 }

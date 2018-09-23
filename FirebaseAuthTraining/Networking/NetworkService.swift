@@ -16,28 +16,30 @@ public enum FirebaseAPI {
     case signUp(UserModel)
     case signIn(email: String, password: String)
     case getUserByEmail(email: String)
+    case updateUser(user: UserModel)
 }
 
 // 2:
 extension FirebaseAPI: TargetType {
     public var baseURL: URL {
         switch self {
-        case .getUserByEmail:
-            return URL.init(string: "https://us-central1-fir-auth-training.cloudfunctions.net")!
+//        case .updateUser:
+//            return URL.init(string: "https://us-central1-fir-auth-training.cloudfunctions.net")!
         default:
             return URL.init(string: "https://fir-auth-training.firebaseio.com")!
         }
-        return URL.init(string: "https://fir-auth-training.firebaseio.com")!
     }
 
     public var path: String {
         switch self {
         case .signUp:
-            return "/users"
+            return "/sign_up"
         case .signIn:
-            return "/users"
+            return "/sign_in"
         case .getUserByEmail:
             return "/get_user_by_email"
+        case .updateUser:
+            return "/update_user"
         }
     }
 
@@ -45,10 +47,12 @@ extension FirebaseAPI: TargetType {
         switch self {
         case .signUp:
             return .post
+        case .signIn:
+            return .post
         case .getUserByEmail:
             return .post
-        default:
-            return .get
+        case .updateUser:
+            return .post
         }
     }
 
@@ -64,6 +68,8 @@ extension FirebaseAPI: TargetType {
         switch self {
         case let .getUserByEmail(email):
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
+        case let .updateUser(user):
+            return .requestJSONEncodable(user)
         default:
             return .requestPlain
         }

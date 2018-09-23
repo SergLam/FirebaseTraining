@@ -27,10 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         // Setup our initialViewController
-        window?.rootViewController = EntranceVC()
+//        window?.rootViewController = EntranceVC()
+        window?.rootViewController = MainVC()
         
         // Configure Firebase
         FirebaseApp.configure()
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        // Enable offline data persistence
+        let db = Firestore.firestore()
+        db.settings = settings
         
         // Configure Google sign in
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
