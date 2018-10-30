@@ -22,25 +22,40 @@ public class UserModel: Codable {
     var photoURL: String?
     var location: Location?
     
+    enum CodingKeys: String, CodingKey {
+        case uid = "uid"
+        case createdAt = "createdAt"
+        case displayName = "displayName"
+        case firstName = "firstName"
+        case lastName = "lastName"
+        case lastSignInTime = "lastSignInTime"
+        case email = "email"
+        case password = "password"
+        case photoURL = "photoURL"
+        case location = "location"
+    }
+    
     static func fromJSON(_ data: Any) -> UserModel {
         let jsonDecoder = JSONDecoder()
         var model = UserModel()
         do{
-           model = try jsonDecoder.decode(UserModel.self, from: data as! Data)
+            model = try jsonDecoder.decode(UserModel.self, from: data as! Data)
         } catch {
-           print(error)
+            print(error)
         }
         return model
     }
+    
 }
 
-public struct Location: Codable {
+struct Location: Codable {
     var latitude: Double = 0
     var longitude: Double = 0
     
-    public init(lat: Double, lon: Double) {
-        self.latitude = lat
-        self.longitude = lon
+    enum CodingKeys: String, CodingKey {
+        case latitude = "latitude"
+        case longitude = "longitude"
     }
+
 }
 

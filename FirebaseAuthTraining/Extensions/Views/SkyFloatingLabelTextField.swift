@@ -8,6 +8,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import SCLAlertView
 
 extension SkyFloatingLabelTextField{
     
@@ -17,5 +18,11 @@ extension SkyFloatingLabelTextField{
         self.lineColor = UIColor.lightGrey
         self.selectedTitleColor = UIColor.overcastBlue
         self.selectedLineColor = UIColor.overcastBlue
+    }
+}
+
+extension SCLAlertView{
+    func showResponseError(error: NSError) {
+        SCLAlertView().showError("Error", subTitle: error.localizedDescription, closeButtonTitle: "OK")
     }
 }

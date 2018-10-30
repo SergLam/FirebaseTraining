@@ -32,6 +32,12 @@ class ListenerManager {
         }
     }
     
+    func removeUserProfileListerer() {
+        if let index = listeners.index(forKey: "userProfile") {
+            listeners["userProfile"]?.remove()
+            listeners.remove(at: index)
+        }
+    }
     
     
     

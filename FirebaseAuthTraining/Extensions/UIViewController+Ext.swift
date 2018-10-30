@@ -17,15 +17,23 @@ extension UIViewController{
     
     func showSucces(data: [String: Any]){
         var message = ""
-        for (index, value) in data.enumerated(){
+        for (index, value) in data.enumerated() {
             message = message + value.key + " : " + String.init(describing: value.value) + "\n"
         }
         SCLAlertView().showSuccess("Success", subTitle: message, closeButtonTitle: "OK")
     }
-}
-
-extension SCLAlertView{
-    func showResponseError(error: NSError) {
-        SCLAlertView().showError("Error", subTitle: error.localizedDescription, closeButtonTitle: "OK")
+    
+    func hideKeyboardOnTap() {
+        let tap: UITapGestureRecognizer =     UITapGestureRecognizer(target: self, action:    #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func hideNavBar(_ isHidden: Bool){
+        self.navigationController?.setNavigationBarHidden(isHidden, animated: true)
     }
 }

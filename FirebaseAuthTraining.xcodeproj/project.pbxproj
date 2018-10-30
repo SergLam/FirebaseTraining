@@ -10,13 +10,13 @@
 		7C02855D210628E000CEB8FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C02855C210628E000CEB8FC /* Localizable.strings */; };
 		7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */; };
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
+		7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */; };
 		7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE77421147DC60069C080 /* ListenerManager.swift */; };
 		7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE7792114A4490069C080 /* MainVC.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
 		7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */; };
-		7C6056712107AE39008CF278 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056702107AE39008CF278 /* UIViewController.swift */; };
-		7C6056732107B645008CF278 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056722107B645008CF278 /* RoundedButton.swift */; };
-		7C65E482210DB74700BAE570 /* StringParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C65E481210DB74700BAE570 /* StringParams.swift */; };
+		7C6056732107B645008CF278 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6056722107B645008CF278 /* UIButton+Ext.swift */; };
+		7C65E482210DB74700BAE570 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C65E481210DB74700BAE570 /* String+Ext.swift */; };
 		7C91F5AE2116F78600551719 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5AD2116F78600551719 /* MapVC.swift */; };
 		7C91F5B02116F7D500551719 /* ChatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5AF2116F7D500551719 /* ChatsVC.swift */; };
 		7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91F5B12116F7EC00551719 /* UsersVC.swift */; };
@@ -30,9 +30,9 @@
 		7CA305D72157D2AF009EB7D2 /* MyProfileTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */; };
 		7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */; };
 		7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */; };
-		7CA80DA62108CA850056450F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* ViewController.swift */; };
+		7CA80DA62108CA850056450F /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA80DA52108CA850056450F /* UIApplication+Ext.swift */; };
 		7CB98A332109E4EF0049B00F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */; };
-		7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* ResponseAlert.swift */; };
+		7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* UIViewController+Ext.swift */; };
 		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
 		7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */; };
 		7CDE31DE2145906B00D3C5FD /* MyProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */; };
@@ -44,13 +44,13 @@
 		7C02855C210628E000CEB8FC /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
+		7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		7C3DE77421147DC60069C080 /* ListenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerManager.swift; sourceTree = "<group>"; };
 		7C3DE7792114A4490069C080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		7C6056702107AE39008CF278 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		7C6056722107B645008CF278 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		7C65E481210DB74700BAE570 /* StringParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringParams.swift; sourceTree = "<group>"; };
+		7C6056722107B645008CF278 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		7C65E481210DB74700BAE570 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		7C91F5AD2116F78600551719 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		7C91F5AF2116F7D500551719 /* ChatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsVC.swift; sourceTree = "<group>"; };
 		7C91F5B12116F7EC00551719 /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
@@ -66,9 +66,9 @@
 		7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableDelegate.swift; sourceTree = "<group>"; };
 		7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		7CA80DA52108CA850056450F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7CA80DA52108CA850056450F /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7CB98A352109E9890049B00F /* ResponseAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseAlert.swift; sourceTree = "<group>"; };
+		7CB98A352109E9890049B00F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
 		7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsEvents.swift; sourceTree = "<group>"; };
 		7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVM.swift; sourceTree = "<group>"; };
@@ -143,8 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				7CB98A342109E8F00049B00F /* Views */,
-				7CB98A352109E9890049B00F /* ResponseAlert.swift */,
-				7C65E481210DB74700BAE570 /* StringParams.swift */,
+				7CB98A352109E9890049B00F /* UIViewController+Ext.swift */,
+				7CA80DA52108CA850056450F /* UIApplication+Ext.swift */,
+				7C65E481210DB74700BAE570 /* String+Ext.swift */,
+				7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,10 +206,8 @@
 		7CB98A342109E8F00049B00F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7CA80DA52108CA850056450F /* ViewController.swift */,
 				7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */,
-				7C6056722107B645008CF278 /* RoundedButton.swift */,
-				7C6056702107AE39008CF278 /* UIViewController.swift */,
+				7C6056722107B645008CF278 /* UIButton+Ext.swift */,
 				7C60566E2107ACAA008CF278 /* SkyFloatingLabelTextField.swift */,
 			);
 			path = Views;
@@ -474,13 +474,13 @@
 				7CA305D72157D2AF009EB7D2 /* MyProfileTableDelegate.swift in Sources */,
 				7CDE31DE2145906B00D3C5FD /* MyProfileVM.swift in Sources */,
 				7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */,
-				7C6056732107B645008CF278 /* RoundedButton.swift in Sources */,
+				7C6056732107B645008CF278 /* UIButton+Ext.swift in Sources */,
 				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
 				7C91F5AE2116F78600551719 /* MapVC.swift in Sources */,
+				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
-				7CB98A362109E9890049B00F /* ResponseAlert.swift in Sources */,
+				7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */,
 				7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */,
-				7C6056712107AE39008CF278 /* UIViewController.swift in Sources */,
 				7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */,
 				7C9752982109AEAA00F3251A /* UserModel.swift in Sources */,
 				7C91F5B8211710E200551719 /* R.generated.swift in Sources */,
@@ -489,11 +489,11 @@
 				7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,
 				7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */,
-				7C65E482210DB74700BAE570 /* StringParams.swift in Sources */,
+				7C65E482210DB74700BAE570 /* String+Ext.swift in Sources */,
 				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
 				7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */,
 				7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */,
-				7CA80DA62108CA850056450F /* ViewController.swift in Sources */,
+				7CA80DA62108CA850056450F /* UIApplication+Ext.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
