@@ -8,10 +8,10 @@ target 'FirebaseAuthTraining' do
   # Pods for FirebaseAuthTraining
   
   # UI
-  pod 'Eureka'
+  pod 'Eureka', '~> 4.2.0'
   pod 'SnapKit', '~> 4.0.0'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'SCLAlertView'
+  pod 'SCLAlertView', '~> 0.8'
   pod 'ESTabBarController-swift'
   
   # RxSwift
