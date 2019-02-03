@@ -13,7 +13,16 @@ import FBSDKLoginKit
 import GoogleSignIn
 import Moya
 
+protocol EntranceVMDelegate: class {
+    func onSignUpSucess()
+    func onSignUpError(_ error: String)
+    func onResetPasswordSucess()
+    func onResetPasswordError(_ error: String)
+}
+
 class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
+    
+    weak var delegate: EntranceVMDelegate?
     
     let provider = MoyaProvider<FirebaseAPI>()
     
@@ -161,44 +170,13 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
         // ...
     }
     
-    // MARK: Validation functions
-    
-    func validateEmail(email: String?) -> Bool{
-        if let email = email{
-            let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-            return emailPredicate.evaluate(with: email)
-        } else {
-            return false
-        }
-    }
-    
-    // Description: Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols
-    func validatePassword(pass: String?) -> Bool {
-        if let pass = pass{
-            let regExp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,100}$"
-            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", regExp)
-            return emailPredicate.evaluate(with: pass)
-        } else {
-            return false
-        }
-    }
-    
-    func isEmptyString(_ str: String?) -> Bool{
-        if let string = str, !string.isEmpty{
-            return true
-        } else{
-            return false
-        }
-    }
-    
     // MARK: Validate new user data
     
     func validateInputs(user: UserModel) -> (Bool, String) {
-        let isEmail = self.validateEmail(email: user.email)
-        let isPassword = self.validatePassword(pass: user.password)
-        let isFirtsName = self.isEmptyString(user.firstName)
-        let isSecondName = self.isEmptyString(user.lastName)
+        let isEmail = user.email.isValidEmail()
+        let isPassword = user.password?.isValidPassword() ?? false
+        let isFirtsName = !(user.firstName?.isEmpty ?? true)
+        let isSecondName = !(user.lastName?.isEmpty ?? true)
         let results = [isEmail, isPassword, isFirtsName, isSecondName]
         let is_success = isEmail && isPassword && isFirtsName && isSecondName
         switch is_success {

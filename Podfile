@@ -13,7 +13,8 @@ target 'FirebaseAuthTraining' do
   pod 'SkyFloatingLabelTextField'
   pod 'SCLAlertView'
   pod 'ESTabBarController-swift'
-  
+  pod 'Closures'
+
   # RxSwift
   pod 'RxSwift'
   pod 'RxCocoa'

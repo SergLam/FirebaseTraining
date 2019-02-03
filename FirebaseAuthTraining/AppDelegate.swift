@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
@@ -27,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         // Setup our initialViewController
-//        window?.rootViewController = EntranceVC()
-        window?.rootViewController = MainVC()
+        window?.rootViewController = EntranceVC()
+//        window?.rootViewController = MainVC()
         
         // Configure Firebase
         FirebaseApp.configure()

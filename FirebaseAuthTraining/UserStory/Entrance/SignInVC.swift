@@ -140,7 +140,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     }
     
     func validateInputs() -> (Bool, String) {
-        let isEmail = viewModel.validateEmail(email: self.email.text)
+        let isEmail = self.email.text?.isValidEmail() ?? false
         return isEmail ? (true, "OK") : (false, "Invalid email")
     }
     
@@ -171,7 +171,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         let textField = alert.addTextField("Email")
         textField.autocapitalizationType = .none
         alert.addButton("Send", backgroundColor: UIColor.offBlue, textColor:  UIColor.black, showTimeout: nil){
-            if let text = textField.text, !text.isEmpty, self.viewModel.validateEmail(email: text){
+            if let text = textField.text, !text.isEmpty, text.isValidEmail() {
                 self.viewModel.restorePassword(email: text)
             } else {
                 SCLAlertView().showError("Restore password", subTitle: "Invalid email", closeButtonTitle: "OK")

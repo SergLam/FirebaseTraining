@@ -22,6 +22,13 @@ public class UserModel: Codable {
     var photoURL: String?
     var location: Location?
     
+    init(firstName: String, lastName: String, email: String, password: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.password = password
+    }
+    
     enum CodingKeys: String, CodingKey {
         case uid = "uid"
         case createdAt = "createdAt"
@@ -35,13 +42,13 @@ public class UserModel: Codable {
         case location = "location"
     }
     
-    static func fromJSON(_ data: Any) -> UserModel {
+    static func fromJSON(_ data: Any) -> UserModel? {
         let jsonDecoder = JSONDecoder()
-        var model = UserModel()
+        var model: UserModel?
         do{
             model = try jsonDecoder.decode(UserModel.self, from: data as! Data)
         } catch {
-            print(error)
+            debugPrint(error)
         }
         return model
     }

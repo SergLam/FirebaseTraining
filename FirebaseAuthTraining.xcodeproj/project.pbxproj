@@ -11,6 +11,8 @@
 		7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */; };
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
 		7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */; };
+		7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */; };
+		7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */; };
 		7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE77421147DC60069C080 /* ListenerManager.swift */; };
 		7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE7792114A4490069C080 /* MainVC.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
@@ -46,6 +48,8 @@
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
 		7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
+		7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalURLOpenable.swift; sourceTree = "<group>"; };
 		7C3DE77421147DC60069C080 /* ListenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerManager.swift; sourceTree = "<group>"; };
 		7C3DE7792114A4490069C080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -104,12 +108,21 @@
 		7C0D21F42104D03100EDB99D /* Entrance */ = {
 			isa = PBXGroup;
 			children = (
+				7C1ADDCA22071AB400F70F2C /* SignUp */,
 				7C0D21F22104D00D00EDB99D /* EntranceVC.swift */,
-				7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */,
 				7C9AE0602104C34100DA1D50 /* SignInVC.swift */,
 				7CB98A37210A0C3E0049B00F /* EntranceVM.swift */,
 			);
 			path = Entrance;
+			sourceTree = "<group>";
+		};
+		7C1ADDCA22071AB400F70F2C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */,
+				7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		7C2E20592104C91300407EE9 /* UserStory */ = {
@@ -149,6 +162,7 @@
 				7CA80DA52108CA850056450F /* UIApplication+Ext.swift */,
 				7C65E481210DB74700BAE570 /* String+Ext.swift */,
 				7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */,
+				7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -367,6 +381,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Closures/Closures.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -396,6 +411,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Closures.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -478,6 +494,7 @@
 				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
 				7C91F5AE2116F78600551719 /* MapVC.swift in Sources */,
 				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
+				7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */,
 				7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */,
@@ -486,6 +503,7 @@
 				7C91F5B8211710E200551719 /* R.generated.swift in Sources */,
 				7C91F5B02116F7D500551719 /* ChatsVC.swift in Sources */,
 				7C91F5B42116F80100551719 /* MyProfileVC.swift in Sources */,
+				7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */,
 				7CECDAC921B2A54900D8EC65 /* MyProfileView.swift in Sources */,
 				7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,

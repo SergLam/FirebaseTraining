@@ -1,61 +1,52 @@
 //
-//  SignUpVC.swift
+//  SignUpView.swift
 //  FirebaseAuthTraining
 //
-//  Created by Serg Liamthev on 7/22/18.
-//  Copyright © 2018 SergLam. All rights reserved.
+//  Created by Serg Liamthev on 2/3/19.
+//  Copyright © 2019 SergLam. All rights reserved.
 //
 
 import UIKit
-import Rswift
-import SnapKit
 import SkyFloatingLabelTextField
-import SafariServices
 import GoogleSignIn
+import Closures
 
-class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDelegate, GIDSignInUIDelegate {
+protocol SignUpViewDelegate: class {
+    func didTapLinkInLabel(_ urlString: String)
+    func didTapSignUpButton()
+    func didTapFacebookLoginButton()
+}
+
+class SignUpView: UIView {
     
-    var parentVC: EntranceVC?
-    let viewModel = EntranceVM.sharedInstance
+    weak var delegate: SignUpViewDelegate?
     
-    let user = UserModel()
+    private let firstName = SkyFloatingLabelTextField()
+    private let lastName = SkyFloatingLabelTextField()
+    private let email = SkyFloatingLabelTextField()
+    private let password = SkyFloatingLabelTextField()
     
-    let firstName = SkyFloatingLabelTextField()
-    let lastName = SkyFloatingLabelTextField()
-    let email = SkyFloatingLabelTextField()
-    let password = SkyFloatingLabelTextField()
+    var userInput: [String] = []
+    private let fieldTags = [1,2,3,4]
     
-    let fieldTags = [1,2,3,4]
+    private let signUpButton = UIButton()
+    private let fbButton = UIButton(type: .custom)
+    private let gmailButton = GIDSignInButton()
     
-    let signUpButton = UIButton()
-    let fbButton = UIButton(type: .custom)
-    let gmailButton = GIDSignInButton()
+    private let termsAndConditions = UILabel()
     
-    let termsAndConditions = UILabel()
-    
-    convenience init(parent: EntranceVC){
-        self.init(nibName:nil, bundle:nil)
-        self.parentVC = parent
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayout()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        GIDSignIn.sharedInstance().uiDelegate = viewModel
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        configureUI()
-    }
-    
-    func configureUI(){
-        self.hideKeyboardOnTap()
-        self.view.backgroundColor = UIColor.offBlue
+    private func setupLayout() {
+        
+        backgroundColor = UIColor.offBlue
         
         firstName.placeholder = R.string.localizable.signUpFirstName()
         firstName.title = R.string.localizable.signUpFirstName()
@@ -64,14 +55,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         firstName.delegate = self
         firstName.setEntranceFieldColors()
         
-        self.view.addSubview(firstName)
+        addSubview(firstName)
         firstName.snp.remakeConstraints{ (make) -> Void in
-            if #available(iOS 11.0, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
-            } else {
-                // Fallback on earlier versions
-                make.top.equalTo(view.snp.topMargin).offset(10)
-            }
+            make.top.equalTo(safeAreaLayoutGuide).offset(10)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
@@ -84,7 +70,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         lastName.delegate = self
         lastName.setEntranceFieldColors()
         
-        self.view.addSubview(lastName)
+        addSubview(lastName)
         lastName.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(firstName.snp.bottom).offset(10)
             make.height.equalTo(46)
@@ -101,7 +87,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         email.delegate = self
         email.setEntranceFieldColors()
         
-        self.view.addSubview(email)
+        addSubview(email)
         email.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(lastName.snp.bottom).offset(10)
             make.height.equalTo(46)
@@ -117,7 +103,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         password.delegate = self
         password.setEntranceFieldColors()
         
-        self.view.addSubview(password)
+        addSubview(password)
         password.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(email.snp.bottom).offset(10)
             make.height.equalTo(46)
@@ -128,9 +114,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         signUpButton.setTitle(R.string.localizable.signUpButton(), for: .normal)
         signUpButton.backgroundColor = UIColor.overcastBlue
         signUpButton.round(radius: 46/2)
-        signUpButton.addTarget(self, action: #selector(self.signUp), for: .touchUpInside)
+        signUpButton.onTap { [unowned self] in
+            self.delegate?.didTapSignUpButton()
+        }
         
-        self.view.addSubview(signUpButton)
+        addSubview(signUpButton)
         signUpButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(password.snp.bottom).offset(25)
             make.height.equalTo(46)
@@ -143,11 +131,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         fbButton.setTitle("Continue with Facebook", for: .normal)
         fbButton.setTitleColor(.white, for: .normal)
         fbButton.round(radius: 46/2)
-        // Handle clicks on the button
-        fbButton.addTarget(self, action: #selector(self.facebookLogin), for: .touchUpInside)
-        let textWidth = "Continue with Facebook".widthOfString(font: fbButton.titleLabel!.font)
+        fbButton.onTap { [unowned self] in
+            self.delegate?.didTapFacebookLoginButton()
+        }
         
-        self.view.addSubview(fbButton)
+        addSubview(fbButton)
         fbButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(signUpButton.snp.bottom).offset(25)
             make.height.equalTo(46)
@@ -155,10 +143,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
             make.right.equalToSuperview().offset(-10)
         }
         
-        self.view.addSubview(gmailButton)
+        addSubview(gmailButton)
         gmailButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(fbButton.snp.bottom).offset(20)
-            make.centerX.equalTo(self.view.center.x)
+            make.centerX.equalTo(self.center.x)
         }
         
         termsAndConditions.numberOfLines = 2
@@ -168,49 +156,33 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         termsAndConditions.font = UIFont.systemFont(ofSize: 14)
         termsAndConditions.highLightLinksInText(links: [R.string.localizable.signUpTerms(), R.string.localizable.signUpPrivacy()])
         termsAndConditions.isUserInteractionEnabled = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapTermsAndConditionsLabel))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapTermsAndConditionsLabel))
         termsAndConditions.addGestureRecognizer(tap)
         
-        self.view.addSubview(termsAndConditions)
+        addSubview(termsAndConditions)
         termsAndConditions.snp.remakeConstraints{ (make) -> Void in
-            if #available(iOS 11.0, *) {
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-25)
-            } else {
-                make.bottom.equalTo(view.snp.bottomMargin).offset(-25)
-            }
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-25)
             make.height.equalTo(46)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
         }
     }
     
-    // MARK: Facebook login
-    
-    @objc func facebookLogin(){
-        viewModel.signUpViaFB(){ completion in
-            self.parentVC?.showMainVC()
+    @objc func tapTermsAndConditionsLabel(){
+        let text = R.string.localizable.signUpRules()
+        let termsRange = (text as NSString).range(of: R.string.localizable.signUpTerms())
+        let privacyRange = (text as NSString).range(of: R.string.localizable.signUpPrivacy())
+        if let tap = termsAndConditions.gestureRecognizers?[0] as? UITapGestureRecognizer {
+        if tap.didTapAttributedTextInLabel(label: termsAndConditions, inRange: termsRange) {
+            self.delegate?.didTapLinkInLabel("https://www.google.com/")
+        } else if tap.didTapAttributedTextInLabel(label: termsAndConditions, inRange: privacyRange) {
+            self.delegate?.didTapLinkInLabel("https://github.com/")
+        }
         }
     }
-    
-   @objc func signUp(){
-    user.firstName = self.firstName.text ?? ""
-    user.lastName = self.lastName.text ?? ""
-    user.email = self.email.text ?? ""
-    user.password = self.password.text ?? ""
-    let validation = viewModel.validateInputs(user: user)
-    if(validation.0){
-        print("Sign Up")
-        viewModel.signUp(email: email.text!, password: password.text!){ completion in
-            if(completion){
-                self.parentVC?.showMainVC()
-            }
-        }
-    } else {
-        self.showError(error: validation.1)
-    }
-    }
-    
+}
+
+extension SignUpView: UITextFieldDelegate {
     // MARK: TextFields delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -233,32 +205,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate, SFSafariViewControllerDel
         }
     }
     
-    // MARK: Open bottom likns handler
-    
-    @objc func tapTermsAndConditionsLabel(){
-        let text = (termsAndConditions.text)!
-        let termsRange = (text as NSString).range(of: R.string.localizable.signUpTerms())
-        let privacyRange = (text as NSString).range(of: R.string.localizable.signUpPrivacy())
-        
-        if let gesture = termsAndConditions.gestureRecognizers?[0] as? UITapGestureRecognizer{
-            if gesture.didTapAttributedTextInLabel(label: termsAndConditions, inRange: termsRange) {
-                if let url = URL.init(string: "https://www.google.com/"){
-                    let svc = SFSafariViewController(url: url)
-                    svc.delegate = self
-                    UIApplication.topViewController()?.present(svc, animated: true, completion: nil)
-                }
-            } else if gesture.didTapAttributedTextInLabel(label: termsAndConditions, inRange: privacyRange) {
-                if let url = URL.init(string: "https://github.com/"){
-                    let svc = SFSafariViewController(url: url)
-                    svc.delegate = self
-                    UIApplication.topViewController()?.present(svc, animated: true, completion: nil)
-                }
-            }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let tag = textField.tag
+        let text = textField.text ?? ""
+        switch tag {
+        case fieldTags[0]:
+            userInput[0] = text + string
+        case fieldTags[1]:
+            userInput[1] = text + string
+        case fieldTags[2]:
+            userInput[2] = text + string
+        case fieldTags[3]:
+            userInput[3] = text + string
+        default:
+            break
         }
+        return true
     }
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
