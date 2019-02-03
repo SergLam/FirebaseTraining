@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'FirebaseAuthTraining' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -8,19 +8,19 @@ target 'FirebaseAuthTraining' do
   # Pods for FirebaseAuthTraining
   
   # UI
-  pod 'Eureka', '~> 4.2.0'
-  pod 'SnapKit', '~> 4.0.0'
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'SCLAlertView', '~> 0.8'
+  pod 'Eureka'
+  pod 'SnapKit'
+  pod 'SkyFloatingLabelTextField'
+  pod 'SCLAlertView'
   pod 'ESTabBarController-swift'
   
   # RxSwift
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   
   # Networking
-  pod 'Moya', '~> 11.0'
-  pod 'SwiftyJSON', '~> 4.0'
+  pod 'Moya'
+  pod 'SwiftyJSON'
   
   # Firebase
   pod 'Firebase'
