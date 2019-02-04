@@ -57,10 +57,9 @@ class SignUpView: UIView {
         
         addSubview(firstName)
         firstName.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         }
         
         lastName.placeholder = R.string.localizable.signUpSecondName()
@@ -72,10 +71,9 @@ class SignUpView: UIView {
         
         addSubview(lastName)
         lastName.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(firstName.snp.bottom).offset(10)
+            make.top.equalTo(firstName.snp.bottom)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         }
         
         email.placeholder = R.string.localizable.entranceEmail()
@@ -89,10 +87,9 @@ class SignUpView: UIView {
         
         addSubview(email)
         email.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(lastName.snp.bottom).offset(10)
+            make.top.equalTo(lastName.snp.bottom)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         }
         
         password.placeholder = R.string.localizable.entrancePassword()
@@ -105,10 +102,9 @@ class SignUpView: UIView {
         
         addSubview(password)
         password.snp.remakeConstraints{ (make) -> Void in
-            make.top.equalTo(email.snp.bottom).offset(10)
+            make.top.equalTo(email.snp.bottom)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10))
         }
         
         signUpButton.setTitle(R.string.localizable.signUpButton(), for: .normal)
@@ -122,8 +118,7 @@ class SignUpView: UIView {
         signUpButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(password.snp.bottom).offset(25)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
         
         // Add a custom login button to your app
@@ -139,14 +134,13 @@ class SignUpView: UIView {
         fbButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(signUpButton.snp.bottom).offset(25)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
         
         addSubview(gmailButton)
         gmailButton.snp.remakeConstraints{ (make) -> Void in
             make.top.equalTo(fbButton.snp.bottom).offset(20)
-            make.centerX.equalTo(self.center.x)
+            make.centerX.equalToSuperview()
         }
         
         termsAndConditions.numberOfLines = 2
@@ -161,10 +155,9 @@ class SignUpView: UIView {
         
         addSubview(termsAndConditions)
         termsAndConditions.snp.remakeConstraints{ (make) -> Void in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-25)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(46)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 25, right: 10))
         }
     }
     

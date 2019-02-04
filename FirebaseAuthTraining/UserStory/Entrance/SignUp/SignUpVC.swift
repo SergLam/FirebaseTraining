@@ -20,7 +20,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
     let contentView = SignUpView()
     let viewModel = EntranceVM.sharedInstance
     
-    
     convenience init(parent: EntranceVC){
         self.init(nibName:nil, bundle:nil)
         self.parentVC = parent
@@ -30,6 +29,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = viewModel
         self.hideKeyboardOnTap()
+        configureUI()
+    }
+    
+    private func configureUI() {
+        view.addSubview(contentView)
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
