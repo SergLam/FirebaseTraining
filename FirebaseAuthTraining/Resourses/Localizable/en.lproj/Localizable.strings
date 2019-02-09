@@ -16,3 +16,8 @@
 "signUp.rules" = "By signing up, you agree to our\n Terms & Conditions and Privacy Policy";
 "signUp.terms" = "Terms & Conditions";
 "signUp.privacy" = "Privacy Policy";
+
+// Errors
+"error.alertTitle" = "Error";
+"error.invalid-email" = "Invalid email";
+"error.invalid-password" = "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols";

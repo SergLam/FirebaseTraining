@@ -20,6 +20,22 @@ protocol EntranceVMDelegate: class {
     func onResetPasswordError(_ error: String)
 }
 
+enum EntranceError: Error {
+    case invalidPassword
+    case invalidEmail
+    
+    var description: String {
+        switch self {
+        case .invalidPassword:
+            return R.string.localizable.errorInvalidPassword()
+        case .invalidEmail:
+            return R.string.localizable.errorInvalidEmail()
+        default:
+            return ""
+        }
+    }
+}
+
 class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     
     weak var delegate: EntranceVMDelegate?
@@ -203,6 +219,13 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
             }
         }
         return (true, "All OK")
+    }
+    
+    // MARK: Validation for sign in
+    
+    func validateEmailAndPassword(email: String, password: String) throws {
+        guard email.isValidEmail() else { throw EntranceError.invalidEmail }
+        guard password.isValidPassword() else { throw EntranceError.invalidPassword }
     }
     
 }

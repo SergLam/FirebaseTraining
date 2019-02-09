@@ -86,75 +86,148 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 10 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
     struct localizable {
-      /// Value: By signing up, you agree to our  Terms & Conditions and Privacy Policy
-      static let signUpRules = Rswift.StringResource(key: "signUp.rules", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Email
-      static let entranceEmail = Rswift.StringResource(key: "entrance.email", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: First Name
-      static let signUpFirstName = Rswift.StringResource(key: "signUp.firstName", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Forgot password?
-      static let signInForgotPassword = Rswift.StringResource(key: "signIn.forgotPassword", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Password
-      static let entrancePassword = Rswift.StringResource(key: "entrance.password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Privacy Policy
-      static let signUpPrivacy = Rswift.StringResource(key: "signUp.privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Second Name
-      static let signUpSecondName = Rswift.StringResource(key: "signUp.secondName", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Sign In
-      static let signInButton = Rswift.StringResource(key: "signIn.button", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Sign Up
-      static let signUpButton = Rswift.StringResource(key: "signUp.button", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Terms & Conditions
-      static let signUpTerms = Rswift.StringResource(key: "signUp.terms", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
+      /// 
+      /// Locales: en
+      static let signUpRules = Rswift.StringResource(key: "signUp.rules", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Email
+      /// 
+      /// Locales: en
+      static let entranceEmail = Rswift.StringResource(key: "entrance.email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Error
+      /// 
+      /// Locales: en
+      static let errorAlertTitle = Rswift.StringResource(key: "error.alertTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: First Name
+      /// 
+      /// Locales: en
+      static let signUpFirstName = Rswift.StringResource(key: "signUp.firstName", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Forgot password?
+      /// 
+      /// Locales: en
+      static let signInForgotPassword = Rswift.StringResource(key: "signIn.forgotPassword", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Invalid email
+      /// 
+      /// Locales: en
+      static let errorInvalidEmail = Rswift.StringResource(key: "error.invalid-email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols
+      /// 
+      /// Locales: en
+      static let errorInvalidPassword = Rswift.StringResource(key: "error.invalid-password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Password
+      /// 
+      /// Locales: en
+      static let entrancePassword = Rswift.StringResource(key: "entrance.password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Privacy Policy
+      /// 
+      /// Locales: en
+      static let signUpPrivacy = Rswift.StringResource(key: "signUp.privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Second Name
+      /// 
+      /// Locales: en
+      static let signUpSecondName = Rswift.StringResource(key: "signUp.secondName", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Sign In
+      /// 
+      /// Locales: en
+      static let signInButton = Rswift.StringResource(key: "signIn.button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Sign Up
+      /// 
+      /// Locales: en
+      static let signUpButton = Rswift.StringResource(key: "signUp.button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Terms & Conditions
+      /// 
+      /// Locales: en
+      static let signUpTerms = Rswift.StringResource(key: "signUp.terms", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       
-      /// Value: By signing up, you agree to our  Terms & Conditions and Privacy Policy
+      /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
+      /// 
+      /// Locales: en
       static func signUpRules(_: Void = ()) -> String {
         return NSLocalizedString("signUp.rules", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Email
+      /// en translation: Email
+      /// 
+      /// Locales: en
       static func entranceEmail(_: Void = ()) -> String {
         return NSLocalizedString("entrance.email", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: First Name
+      /// en translation: Error
+      /// 
+      /// Locales: en
+      static func errorAlertTitle(_: Void = ()) -> String {
+        return NSLocalizedString("error.alertTitle", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: First Name
+      /// 
+      /// Locales: en
       static func signUpFirstName(_: Void = ()) -> String {
         return NSLocalizedString("signUp.firstName", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Forgot password?
+      /// en translation: Forgot password?
+      /// 
+      /// Locales: en
       static func signInForgotPassword(_: Void = ()) -> String {
         return NSLocalizedString("signIn.forgotPassword", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Password
+      /// en translation: Invalid email
+      /// 
+      /// Locales: en
+      static func errorInvalidEmail(_: Void = ()) -> String {
+        return NSLocalizedString("error.invalid-email", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols
+      /// 
+      /// Locales: en
+      static func errorInvalidPassword(_: Void = ()) -> String {
+        return NSLocalizedString("error.invalid-password", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Password
+      /// 
+      /// Locales: en
       static func entrancePassword(_: Void = ()) -> String {
         return NSLocalizedString("entrance.password", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Privacy Policy
+      /// en translation: Privacy Policy
+      /// 
+      /// Locales: en
       static func signUpPrivacy(_: Void = ()) -> String {
         return NSLocalizedString("signUp.privacy", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Second Name
+      /// en translation: Second Name
+      /// 
+      /// Locales: en
       static func signUpSecondName(_: Void = ()) -> String {
         return NSLocalizedString("signUp.secondName", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Sign In
+      /// en translation: Sign In
+      /// 
+      /// Locales: en
       static func signInButton(_: Void = ()) -> String {
         return NSLocalizedString("signIn.button", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Sign Up
+      /// en translation: Sign Up
+      /// 
+      /// Locales: en
       static func signUpButton(_: Void = ()) -> String {
         return NSLocalizedString("signUp.button", bundle: R.hostingBundle, comment: "")
       }
       
-      /// Value: Terms & Conditions
+      /// en translation: Terms & Conditions
+      /// 
+      /// Locales: en
       static func signUpTerms(_: Void = ()) -> String {
         return NSLocalizedString("signUp.terms", bundle: R.hostingBundle, comment: "")
       }
