@@ -17,8 +17,8 @@ extension UILabel{
         
         for link in links {
             let range = nstext.localizedStandardRange(of: link)
-            underlineAttriString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
-            underlineAttriString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue , range: range)
+            underlineAttriString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+            underlineAttriString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue , range: range)
         }
         
         self.attributedText = underlineAttriString

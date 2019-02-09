@@ -11,10 +11,10 @@ import SnapKit
 
 class EntranceVC: UIViewController {
     
-    var childControllers: [UIViewController] = []
-    let containerView = UIView()
-    let pages = [R.string.localizable.signInButton(), R.string.localizable.signUpButton()]
-    let segment = UISegmentedControl()
+    private var childControllers: [UIViewController] = []
+    private let containerView = UIView()
+    private let pages = [R.string.localizable.signInButton(), R.string.localizable.signUpButton()]
+    private let segment = UISegmentedControl()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -26,32 +26,27 @@ class EntranceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let signInVC = SignInVC(parent: self)
-        let signUpVC = SignUpVC(parent: self)
-        
-        childControllers.append(contentsOf: [signInVC, signUpVC])
-        
-        childViewControllers.forEach {
-            addChildViewController($0)
-            $0.didMove(toParentViewController: self)
-        }
-        
+        setupChildViewControllers()
         configureUI()
-        
     }
     
     override var prefersStatusBarHidden: Bool {
         return false
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func setupChildViewControllers() {
+        let signInVC = SignInVC(parent: self)
+        let signUpVC = SignUpVC(parent: self)
+        
+        childControllers.append(contentsOf: [signInVC, signUpVC])
+        
+        children.forEach {
+            addChild($0)
+            $0.didMove(toParent: self)
+        }
     }
     
-    func configureUI(){
+    private func configureUI(){
         self.view.backgroundColor = .cyan
         for (index, page) in pages.enumerated() {
           segment.insertSegment(withTitle: page, at: index, animated: false)
@@ -59,7 +54,7 @@ class EntranceVC: UIViewController {
         segment.layer.cornerRadius = 5.0
         segment.backgroundColor = UIColor.white
         segment.selectedSegmentIndex = 0
-        segment.addTarget(self, action: #selector(self.changeVisibleVC(sender:)), for: UIControlEvents.valueChanged)
+        segment.addTarget(self, action: #selector(self.changeVisibleVC(sender:)), for: UIControl.Event.valueChanged)
 
         self.view.addSubview(segment)
         segment.snp.makeConstraints{ (make) -> Void in
