@@ -30,3 +30,6 @@ xcuserdata/
 
 # CocoaPods
 Pods/
+
+# R.swift
+R.generated.swift
