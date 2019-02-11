@@ -14,9 +14,12 @@ import FBSDKLoginKit
 import GoogleSignIn
 import GoogleMaps
 import GooglePlaces
+import ReSwift
+
+let store = Store<AppState>(reducer: appReducer, state: nil, middleware: [])
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     

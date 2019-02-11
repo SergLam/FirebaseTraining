@@ -170,6 +170,7 @@ PODS:
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
   - Result (4.1.0)
+  - ReSwift (4.0.1)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -199,6 +200,7 @@ DEPENDENCIES:
   - KeychainSwift
   - Moya
   - R.swift
+  - ReSwift
   - RxCocoa
   - RxSwift
   - SCLAlertView
@@ -245,6 +247,7 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - Result
+    - ReSwift
     - RxAtomic
     - RxCocoa
     - RxSwift
@@ -291,6 +294,7 @@ SPEC CHECKSUMS:
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
@@ -300,6 +304,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
 
-PODFILE CHECKSUM: 54ff967d534d523497f86c6c2c3e6fbf3ba53ef3
+PODFILE CHECKSUM: 00e48a0eb367ca7fb3be4454c283c8985e69c6b4
 
 COCOAPODS: 1.5.3

@@ -45,6 +45,16 @@ class SessionManager {
         if let gRefreshToken = googleRefreshToken { keychain.set(gRefreshToken, forKey: KeychainKeys.gRefreshToken) }
     }
     
+    func deleteUserCredentials() {
+        let keychain = KeychainSwift()
+        keychain.delete(KeychainKeys.email)
+        keychain.delete(KeychainKeys.password)
+        keychain.delete(KeychainKeys.facebookToken)
+        keychain.delete(KeychainKeys.fbTokenExpirationDate)
+        keychain.delete(KeychainKeys.gIdToken)
+        keychain.delete(KeychainKeys.gRefreshToken)
+    }
+    
     // MARK: Meth
     
     func signInWithFacebook(token: FBSDKAccessToken, completion: @escaping firebaseAuthResult) {

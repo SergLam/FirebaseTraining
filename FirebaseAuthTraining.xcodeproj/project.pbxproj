@@ -37,6 +37,9 @@
 		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
 		7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */; };
 		7CDE31DE2145906B00D3C5FD /* MyProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */; };
+		7CE44DC12211721100569A0B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC02211721100569A0B /* AppState.swift */; };
+		7CE44DC3221172A600569A0B /* AppReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC2221172A600569A0B /* AppReducers.swift */; };
+		7CE44DC5221172C400569A0B /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC4221172C400569A0B /* UserActions.swift */; };
 		7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF175220EDF5700D231C9 /* SignInView.swift */; };
 		7CEBF179220F2BF400D231C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBF17B220F2BF400D231C9 /* Localizable.strings */; };
 		7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF17D220F384F00D231C9 /* AppRouter.swift */; };
@@ -80,6 +83,9 @@
 		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
 		7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsEvents.swift; sourceTree = "<group>"; };
 		7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVM.swift; sourceTree = "<group>"; };
+		7CE44DC02211721100569A0B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		7CE44DC2221172A600569A0B /* AppReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducers.swift; sourceTree = "<group>"; };
+		7CE44DC4221172C400569A0B /* UserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
 		7CEBF175220EDF5700D231C9 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7CEBF17A220F2BF400D231C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7CEBF17D220F384F00D231C9 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 		7C9AE05D2104C34100DA1D50 /* FirebaseAuthTraining */ = {
 			isa = PBXGroup;
 			children = (
+				7CE44DBF22116AC600569A0B /* Redux */,
 				7CEBF17C220F383500D231C9 /* Services */,
 				7CD9CA8E212A065E007AC789 /* CustomViews */,
 				7C9752962109AE9100F3251A /* DomainModels */,
@@ -270,6 +277,16 @@
 				7CECDAC821B2A54900D8EC65 /* MyProfileView.swift */,
 			);
 			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		7CE44DBF22116AC600569A0B /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				7CE44DC02211721100569A0B /* AppState.swift */,
+				7CE44DC2221172A600569A0B /* AppReducers.swift */,
+				7CE44DC4221172C400569A0B /* UserActions.swift */,
+			);
+			path = Redux;
 			sourceTree = "<group>";
 		};
 		7CEBF174220EDEB900D231C9 /* SignIn */ = {
@@ -421,6 +438,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -452,6 +470,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -522,7 +541,9 @@
 				7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */,
 				7C6056732107B645008CF278 /* UIButton+Ext.swift in Sources */,
 				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
+				7CE44DC12211721100569A0B /* AppState.swift in Sources */,
 				7C91F5AE2116F78600551719 /* MapVC.swift in Sources */,
+				7CE44DC3221172A600569A0B /* AppReducers.swift in Sources */,
 				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
 				7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */,
 				7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */,
@@ -545,6 +566,7 @@
 				7C65E482210DB74700BAE570 /* String+Ext.swift in Sources */,
 				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
 				7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */,
+				7CE44DC5221172C400569A0B /* UserActions.swift in Sources */,
 				7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */,
 				7CA80DA62108CA850056450F /* UIApplication+Ext.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,

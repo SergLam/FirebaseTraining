@@ -45,6 +45,7 @@ target 'FirebaseAuthTraining' do
   
   # General
   pod 'R.swift'
+  pod 'ReSwift'
   
   # Store user data
   pod 'KeychainSwift'
