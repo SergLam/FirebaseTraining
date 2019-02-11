@@ -14,10 +14,10 @@ import GoogleSignIn
 
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     
-    var parentVC: EntranceVC?
-    let viewModel = EntranceVM.sharedInstance
+    private var parentVC: EntranceVC?
+    private let viewModel = EntranceVM.sharedInstance
     
-    let contentView = SignInView()
+    private let contentView = SignInView()
     
     convenience init(parent: EntranceVC){
         self.init(nibName:nil, bundle:nil)
@@ -27,6 +27,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.delegate = self
+        viewModel.delegate = parentVC
         GIDSignIn.sharedInstance().uiDelegate = viewModel
         configureUI()
     }
@@ -50,11 +51,7 @@ extension SignInVC: SignInViewDelegate {
             guard let error = error as? EntranceError else { return }
             SCLAlertView().showError(R.string.localizable.errorAlertTitle(), subTitle: error.description)
         }
-        viewModel.signIn(email: email, password: password){ completion in
-            if(completion){
-                self.parentVC?.showMainVC()
-            }
-        }
+        viewModel.signIn(email: email, password: password)
     }
     
     func didTapRestorePasswordButton() {
@@ -72,11 +69,7 @@ extension SignInVC: SignInViewDelegate {
     }
     
     func didTapFBLoginButton() {
-        viewModel.signUpViaFB(){ completion in
-            if(completion){
-                self.parentVC?.showMainVC()
-            }
-        }
+        viewModel.signUpViaFB()
     }
     
 }

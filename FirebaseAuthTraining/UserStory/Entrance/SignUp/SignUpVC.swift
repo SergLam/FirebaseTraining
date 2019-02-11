@@ -15,10 +15,10 @@ import GoogleSignIn
 
 class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDSignInUIDelegate {
     
-    var parentVC: EntranceVC?
+    private var parentVC: EntranceVC?
     
-    let contentView = SignUpView()
-    let viewModel = EntranceVM.sharedInstance
+    private let contentView = SignUpView()
+    private let viewModel = EntranceVM.sharedInstance
     
     convenience init(parent: EntranceVC){
         self.init(nibName:nil, bundle:nil)
@@ -27,6 +27,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contentView.delegate = self
+        viewModel.delegate = parentVC
         GIDSignIn.sharedInstance().uiDelegate = viewModel
         self.hideKeyboardOnTap()
         configureUI()
@@ -54,19 +56,12 @@ extension SignUpVC: SignUpViewDelegate {
         } catch {
             guard let error = error as? EntranceError else { return }
             self.showError(error: error.description)
+            return
         }
-        viewModel.signUp(email: input[2], password: input[3]){ completion in
-            if(completion){
-                self.parentVC?.showMainVC()
-            }
-        }
+        viewModel.signUp(email: input[2], password: input[3])
     }
     
     func didTapFacebookLoginButton() {
-        viewModel.signUpViaFB(){ completion in
-            if(completion){
-                self.parentVC?.showMainVC()
-            }
-        }
+        viewModel.signUpViaFB()
     }
 }

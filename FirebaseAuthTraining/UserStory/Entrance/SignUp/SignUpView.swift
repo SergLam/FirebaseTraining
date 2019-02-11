@@ -26,7 +26,7 @@ class SignUpView: UIView {
     private let email = SkyFloatingLabelTextField()
     private let password = SkyFloatingLabelTextField()
     
-    var userInput: [String] = []
+    var userInput: [String] = ["","","",""]
     private let fieldTags = [1,2,3,4]
     
     private let signUpButton = UIButton()

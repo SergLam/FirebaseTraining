@@ -86,12 +86,20 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 14 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 22 localization keys.
     struct localizable {
+      /// en translation: %@ entity is empty
+      /// 
+      /// Locales: en
+      static let errorEmptyEntity = Rswift.StringResource(key: "error.empty-entity", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: %@ field is empty.
       /// 
       /// Locales: en
       static let errorEmptyField = Rswift.StringResource(key: "error.empty-field", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: An email with password reset link has been sent. Check your email, please.
+      /// 
+      /// Locales: en
+      static let resetPasswordMessage = Rswift.StringResource(key: "reset-password-message", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
       /// 
       /// Locales: en
@@ -104,6 +112,18 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let errorAlertTitle = Rswift.StringResource(key: "error.alertTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Facebook Autorization - unable to get result
+      /// 
+      /// Locales: en
+      static let errorFbEmptyResult = Rswift.StringResource(key: "error.fb-empty-result", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Facebook Autorization canceled by user
+      /// 
+      /// Locales: en
+      static let errorFbCanceledByUser = Rswift.StringResource(key: "error.fb-canceled-by-user", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Failed to get access token
+      /// 
+      /// Locales: en
+      static let errorFbAccessTokenNil = Rswift.StringResource(key: "error.fb-access-token-nil", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: First Name
       /// 
       /// Locales: en
@@ -128,6 +148,10 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let signUpPrivacy = Rswift.StringResource(key: "signUp.privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Restore password
+      /// 
+      /// Locales: en
+      static let resetPasswordTitle = Rswift.StringResource(key: "reset-password-title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Second Name
       /// 
       /// Locales: en
@@ -140,16 +164,38 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let signUpButton = Rswift.StringResource(key: "signUp.button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Something went wrong
+      /// 
+      /// Locales: en
+      static let errorUnknown = Rswift.StringResource(key: "error.unknown", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Success!
+      /// 
+      /// Locales: en
+      static let alertSuccessTitle = Rswift.StringResource(key: "alert.success-title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Terms & Conditions
       /// 
       /// Locales: en
       static let signUpTerms = Rswift.StringResource(key: "signUp.terms", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      
+      /// en translation: %@ entity is empty
+      /// 
+      /// Locales: en
+      static func errorEmptyEntity(_ value1: String) -> String {
+        return String(format: NSLocalizedString("error.empty-entity", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
+      }
       
       /// en translation: %@ field is empty.
       /// 
       /// Locales: en
       static func errorEmptyField(_ value1: String) -> String {
         return String(format: NSLocalizedString("error.empty-field", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
+      }
+      
+      /// en translation: An email with password reset link has been sent. Check your email, please.
+      /// 
+      /// Locales: en
+      static func resetPasswordMessage(_: Void = ()) -> String {
+        return NSLocalizedString("reset-password-message", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
@@ -171,6 +217,27 @@ struct R: Rswift.Validatable {
       /// Locales: en
       static func errorAlertTitle(_: Void = ()) -> String {
         return NSLocalizedString("error.alertTitle", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Facebook Autorization - unable to get result
+      /// 
+      /// Locales: en
+      static func errorFbEmptyResult(_: Void = ()) -> String {
+        return NSLocalizedString("error.fb-empty-result", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Facebook Autorization canceled by user
+      /// 
+      /// Locales: en
+      static func errorFbCanceledByUser(_: Void = ()) -> String {
+        return NSLocalizedString("error.fb-canceled-by-user", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Failed to get access token
+      /// 
+      /// Locales: en
+      static func errorFbAccessTokenNil(_: Void = ()) -> String {
+        return NSLocalizedString("error.fb-access-token-nil", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: First Name
@@ -215,6 +282,13 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("signUp.privacy", bundle: R.hostingBundle, comment: "")
       }
       
+      /// en translation: Restore password
+      /// 
+      /// Locales: en
+      static func resetPasswordTitle(_: Void = ()) -> String {
+        return NSLocalizedString("reset-password-title", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// en translation: Second Name
       /// 
       /// Locales: en
@@ -234,6 +308,20 @@ struct R: Rswift.Validatable {
       /// Locales: en
       static func signUpButton(_: Void = ()) -> String {
         return NSLocalizedString("signUp.button", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Something went wrong
+      /// 
+      /// Locales: en
+      static func errorUnknown(_: Void = ()) -> String {
+        return NSLocalizedString("error.unknown", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// en translation: Success!
+      /// 
+      /// Locales: en
+      static func alertSuccessTitle(_: Void = ()) -> String {
+        return NSLocalizedString("alert.success-title", bundle: R.hostingBundle, comment: "")
       }
       
       /// en translation: Terms & Conditions

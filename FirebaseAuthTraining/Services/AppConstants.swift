@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Localizable = R.string.localizable
+
 struct KeychainKeys {
     static let email = "firebase-training-email"
     static let password = "firebase-training-password"

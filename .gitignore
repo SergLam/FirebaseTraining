@@ -32,4 +32,4 @@ xcuserdata/
 Pods/
 
 # R.swift
-R.generated.swift
+*.generated.swift

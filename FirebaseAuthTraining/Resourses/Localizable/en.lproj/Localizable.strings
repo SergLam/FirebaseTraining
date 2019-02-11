@@ -17,8 +17,22 @@
 "signUp.terms" = "Terms & Conditions";
 "signUp.privacy" = "Privacy Policy";
 
+// Reset password
+"reset-password-title" = "Restore password";
+"reset-password-message" = "An email with password reset link has been sent. Check your email, please.";
+
 // Errors
+"error.unknown" = "Something went wrong";
 "error.empty-field" = "%@ field is empty.";
+"error.empty-entity" = "%@ entity is empty";
 "error.alertTitle" = "Error";
 "error.invalid-email" = "Invalid email";
 "error.invalid-password" = "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols";
+
+// Facebook errors
+"error.fb-empty-result" = "Facebook Autorization - unable to get result";
+"error.fb-canceled-by-user" = "Facebook Autorization canceled by user";
+"error.fb-access-token-nil" = "Failed to get access token";
+
+// Alerts
+"alert.success-title" = "Success!";
