@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         GIDSignIn.sharedInstance().delegate = EntranceVM.sharedInstance
         
         // Configure GoogleMaps + GooglePlaces
-        GMSServices.provideAPIKey("AIzaSyCA1t8DtFDxTAxe8akmJi_sBiG6u3V_LLw")
-        GMSPlacesClient.provideAPIKey("AIzaSyCA1t8DtFDxTAxe8akmJi_sBiG6u3V_LLw")
+        GMSServices.provideAPIKey(AppConstants.googleApiKey)
+        GMSPlacesClient.provideAPIKey(AppConstants.googleApiKey)
         
         // Configure facebook login
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
             return GIDSignIn.sharedInstance().handle(url,
-        sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
     }
     
 }

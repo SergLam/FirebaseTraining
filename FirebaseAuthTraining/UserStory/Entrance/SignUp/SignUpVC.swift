@@ -49,22 +49,24 @@ extension SignUpVC: SignUpViewDelegate {
     func didTapSignUpButton() {
         let input = contentView.userInput
         let user = UserModel(firstName: input[0], lastName: input[1], email: input[2], password: input[3])
-        let validation = viewModel.validateInputs(user: user)
-        if(validation.0){
-            debugPrint("Sign Up")
-            viewModel.signUp(email: input[2], password: input[3]){ completion in
-                if(completion){
-                    self.parentVC?.showMainVC()
-                }
+        do {
+            try viewModel.validateInputs(user: user)
+        } catch {
+            guard let error = error as? EntranceError else { return }
+            self.showError(error: error.description)
+        }
+        viewModel.signUp(email: input[2], password: input[3]){ completion in
+            if(completion){
+                self.parentVC?.showMainVC()
             }
-        } else {
-            self.showError(error: validation.1)
         }
     }
     
     func didTapFacebookLoginButton() {
         viewModel.signUpViaFB(){ completion in
-            self.parentVC?.showMainVC()
+            if(completion){
+                self.parentVC?.showMainVC()
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ protocol EntranceVMDelegate: class {
 }
 
 enum EntranceError: Error {
+    case emptyField(fieldName: String)
     case invalidPassword
     case invalidEmail
     
@@ -30,8 +31,8 @@ enum EntranceError: Error {
             return R.string.localizable.errorInvalidPassword()
         case .invalidEmail:
             return R.string.localizable.errorInvalidEmail()
-        default:
-            return ""
+        case .emptyField(let fieldName):
+            return R.string.localizable.errorEmptyField(fieldName)
         }
     }
 }
@@ -188,37 +189,19 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     
     // MARK: Validate new user data
     
-    func validateInputs(user: UserModel) -> (Bool, String) {
-        let isEmail = user.email.isValidEmail()
-        let isPassword = user.password?.isValidPassword() ?? false
-        let isFirtsName = !(user.firstName?.isEmpty ?? true)
-        let isSecondName = !(user.lastName?.isEmpty ?? true)
-        let results = [isEmail, isPassword, isFirtsName, isSecondName]
-        let is_success = isEmail && isPassword && isFirtsName && isSecondName
-        switch is_success {
-        case true:
-            return (true, "All OK")
-        case false:
-            for (index, value) in results.enumerated(){
-                if(value){
-                    continue
-                } else {
-                    switch index{
-                    case 0:
-                        return (false, "Invalid email")
-                    case 1:
-                        return (false, "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols")
-                    case 2:
-                        return (false, "Empry first name")
-                    case 3:
-                        return (false, "Empry second name")
-                    default:
-                        break
-                    }
-                }
-            }
+    func validateInputs(user: UserModel) throws {
+        guard user.email.isValidEmail() else {
+            throw EntranceError.invalidEmail
         }
-        return (true, "All OK")
+        guard let password = user.password, password.isValidPassword() else {
+            throw EntranceError.invalidPassword
+        }
+        guard let firstName = user.firstName, firstName.notEmpty() else {
+            throw EntranceError.emptyField(fieldName: R.string.localizable.signUpFirstName())
+        }
+        guard let lastName = user.lastName, lastName.notEmpty() else {
+            throw EntranceError.emptyField(fieldName: R.string.localizable.signUpSecondName())
+        }
     }
     
     // MARK: Validation for sign in

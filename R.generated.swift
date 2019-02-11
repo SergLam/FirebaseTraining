@@ -86,8 +86,12 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 14 localization keys.
     struct localizable {
+      /// en translation: %@ field is empty.
+      /// 
+      /// Locales: en
+      static let errorEmptyField = Rswift.StringResource(key: "error.empty-field", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
       /// 
       /// Locales: en
@@ -140,6 +144,13 @@ struct R: Rswift.Validatable {
       /// 
       /// Locales: en
       static let signUpTerms = Rswift.StringResource(key: "signUp.terms", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      
+      /// en translation: %@ field is empty.
+      /// 
+      /// Locales: en
+      static func errorEmptyField(_ value1: String) -> String {
+        return String(format: NSLocalizedString("error.empty-field", bundle: R.hostingBundle, comment: ""), locale: R.applicationLocale, value1)
+      }
       
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
       /// 

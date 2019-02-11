@@ -18,6 +18,7 @@
 "signUp.privacy" = "Privacy Policy";
 
 // Errors
+"error.empty-field" = "%@ field is empty.";
 "error.alertTitle" = "Error";
 "error.invalid-email" = "Invalid email";
 "error.invalid-password" = "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols";
