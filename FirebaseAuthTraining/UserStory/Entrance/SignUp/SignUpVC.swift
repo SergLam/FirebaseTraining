@@ -13,7 +13,7 @@ import SkyFloatingLabelTextField
 import SafariServices
 import GoogleSignIn
 
-class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDSignInUIDelegate {
+class SignUpVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
     private var parentVC: EntranceVC?
     
@@ -43,9 +43,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
     
 }
 
-extension SignUpVC: SignUpViewDelegate {
+extension SignUpVC: SignUpViewDelegate, SFSafariViewControllerDelegate {
     func didTapLinkInLabel(_ urlString: String) {
         openURL(urlString)
+    }
+    
+    func openURL(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        parentVC?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func didTapSignUpButton() {

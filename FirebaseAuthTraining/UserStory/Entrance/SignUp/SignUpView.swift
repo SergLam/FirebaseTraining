@@ -147,7 +147,9 @@ class SignUpView: UIView {
         termsAndConditions.text = R.string.localizable.signUpRules()
         termsAndConditions.textAlignment = .center
         termsAndConditions.textColor = UIColor.overcastBlue
-        termsAndConditions.font = UIFont.systemFont(ofSize: 14)
+        termsAndConditions.adjustsFontSizeToFitWidth = true
+        termsAndConditions.minimumScaleFactor = 0.1
+        termsAndConditions.font = UIFont.systemFont(ofSize: 150)
         termsAndConditions.highLightLinksInText(links: [R.string.localizable.signUpTerms(), R.string.localizable.signUpPrivacy()])
         termsAndConditions.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapTermsAndConditionsLabel))

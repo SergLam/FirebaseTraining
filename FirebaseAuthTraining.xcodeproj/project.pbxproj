@@ -11,7 +11,6 @@
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
 		7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */; };
 		7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */; };
-		7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */; };
 		7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE77421147DC60069C080 /* ListenerManager.swift */; };
 		7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE7792114A4490069C080 /* MainVC.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
@@ -55,7 +54,6 @@
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
 		7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalURLOpenable.swift; sourceTree = "<group>"; };
 		7C3DE77421147DC60069C080 /* ListenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerManager.swift; sourceTree = "<group>"; };
 		7C3DE7792114A4490069C080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				7CA80DA52108CA850056450F /* UIApplication+Ext.swift */,
 				7C65E481210DB74700BAE570 /* String+Ext.swift */,
 				7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */,
-				7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,7 +544,6 @@
 				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
 				7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */,
 				7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */,
-				7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */,
 				7CEBF182220F86BD00D231C9 /* AppConstants.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */,
