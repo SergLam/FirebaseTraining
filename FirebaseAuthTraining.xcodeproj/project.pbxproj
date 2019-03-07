@@ -27,6 +27,7 @@
 		7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE0602104C34100DA1D50 /* SignInVC.swift */; };
 		7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0652104C34200DA1D50 /* Assets.xcassets */; };
 		7C9AE0692104C34200DA1D50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0672104C34200DA1D50 /* LaunchScreen.storyboard */; };
+		7C9B14942230F4BA0041DF37 /* VendorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9B14932230F4BA0041DF37 /* VendorService.swift */; };
 		7CA305D72157D2AF009EB7D2 /* MyProfileTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */; };
 		7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */; };
 		7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */; };
@@ -72,6 +73,7 @@
 		7C9AE0652104C34200DA1D50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C9AE0682104C34200DA1D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C9AE06A2104C34200DA1D50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C9B14932230F4BA0041DF37 /* VendorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorService.swift; sourceTree = "<group>"; };
 		7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableDelegate.swift; sourceTree = "<group>"; };
 		7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				7CEBF17D220F384F00D231C9 /* AppRouter.swift */,
 				7CEBF17F220F831D00D231C9 /* SessionManager.swift */,
 				7CEBF181220F86BD00D231C9 /* AppConstants.swift */,
+				7C9B14932230F4BA0041DF37 /* VendorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
 				7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */,
 				7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */,
+				7C9B14942230F4BA0041DF37 /* VendorService.swift in Sources */,
 				7CEBF182220F86BD00D231C9 /* AppConstants.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */,

@@ -26,47 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let sharedFirestore = Firestore.firestore()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
-        // Setup our initialViewController
         window?.rootViewController = EntranceVC()
 //        window?.rootViewController = MainVC()
         
-        // Configure Firebase
-        FirebaseApp.configure()
-        let settings = FirestoreSettings()
-        settings.isPersistenceEnabled = true
-        // Enable offline data persistence
-        let db = Firestore.firestore()
-        db.settings = settings
-        
-        // Configure Google sign in
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = EntranceVM.sharedInstance
-        
-        // Configure GoogleMaps + GooglePlaces
-        GMSServices.provideAPIKey(AppConstants.googleApiKey)
-        GMSPlacesClient.provideAPIKey(AppConstants.googleApiKey)
-        
-        // Configure facebook login
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        VendorService.setupServices(application, launchOptions)
         return true
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-    }
-    
-    // MARK: Google Sign in methods
-    
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-    }
     
 }
 
