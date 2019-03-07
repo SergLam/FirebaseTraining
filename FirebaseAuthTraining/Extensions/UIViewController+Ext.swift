@@ -17,7 +17,7 @@ extension UIViewController{
     
     func showSucces(data: [String: Any]){
         var message = ""
-        for (index, value) in data.enumerated() {
+        for value in data {
             message = message + value.key + " : " + String.init(describing: value.value) + "\n"
         }
         SCLAlertView().showSuccess("Success", subTitle: message, closeButtonTitle: "OK")

@@ -48,7 +48,8 @@ public class UserModel: Codable {
         do{
             model = try jsonDecoder.decode(UserModel.self, from: data as! Data)
         } catch {
-            debugPrint(error)
+            assertionFailure(error.localizedDescription)
+            return nil
         }
         return model
     }
