@@ -13,30 +13,31 @@ import FBSDKLoginKit
 import GoogleSignIn
 import Moya
 
-protocol EntranceVMDelegate: class {
-    func onSignUpSucess()
+protocol EntranceVMDelegate: AnyObject {
+    func onSignUpSucess(_ auth: AuthDataResult)
     func onSignUpError(_ error: String)
     func onResetPasswordSucess()
     func onResetPasswordError(_ error: String)
 }
 
 enum EntranceError: Error {
+    case emptyField(fieldName: String)
     case invalidPassword
     case invalidEmail
     
     var description: String {
         switch self {
         case .invalidPassword:
-            return R.string.localizable.errorInvalidPassword()
+            return Localizable.errorInvalidPassword()
         case .invalidEmail:
-            return R.string.localizable.errorInvalidEmail()
-        default:
-            return ""
+            return Localizable.errorInvalidEmail()
+        case .emptyField(let fieldName):
+            return Localizable.errorEmptyField(fieldName)
         }
     }
 }
 
-class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
+final class EntranceVM: NSObject, GIDSignInDelegate {
     
     weak var delegate: EntranceVMDelegate?
     
@@ -44,90 +45,70 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     
     static let sharedInstance = EntranceVM()
     
-    let defaults = UserDefaults.standard
-    
-    func signUp(email: String, password: String, completion: @escaping (Bool) -> () ){
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            if let firebaseError = error{
-                SCLAlertView().showResponseError(error: firebaseError as NSError)
-                completion(false)
-                return
-            }
-            guard authResult != nil else {
-                SCLAlertView().showError("Error", subTitle: "Something went wrong")
-                completion(false)
-                return
-            }
-            self.defaults.set(email, forKey: "email")
-            completion(true)
+    func signUp(email: String, password: String) {
+        SessionManager.shared.signUpWithEmail(email: email, password: password) { [weak self] (authResult, error) in
+            self?.handleFirebaseResponse(auth: authResult, err: error)
         }
     }
     
-    func signIn(email: String, password: String, completion: @escaping (Bool) -> ()){
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if let firebaseError = error{
-                SCLAlertView().showResponseError(error: firebaseError as NSError)
-                return
-            }
-            guard let ready_user = user else {
-                SCLAlertView().showError("Error", subTitle: "Something went wrong")
-                return
-            }
-            print(ready_user.user)
-            self.defaults.set(email, forKey: "email")
-            completion(true)
+    func signIn(email: String, password: String) {
+        SessionManager.shared.signInWithEmail(email: email, password: password) { [weak self](authResult, error) in
+            self?.handleFirebaseResponse(auth: authResult, err: error)
         }
+    }
+    
+    private func handleFirebaseResponse(auth: AuthDataResult?, err: Error?) {
+        guard let error = err else {
+            if let res = auth {
+                self.delegate?.onSignUpSucess(res)
+                return
+            } else {
+                self.delegate?.onSignUpError(Localizable.errorEmptyEntity(String(describing: auth.self)))
+                return
+            }
+        }
+        self.delegate?.onSignUpError(error.localizedDescription)
     }
     
     func restorePassword(email: String){
-        // TODO: restore password via firebase
-        let vc = UIApplication.topViewController()!
         Auth.auth().sendPasswordReset(withEmail: email){ error in
             if let error = error{
-                vc.showError(error: error.localizedDescription)
-            } else{
-                SCLAlertView().showSuccess("Restore password", subTitle: "An email has been sent", closeButtonTitle: "OK")
+                self.delegate?.onResetPasswordError(error.localizedDescription)
+            } else {
+                self.delegate?.onResetPasswordSucess()
             }
         }
     }
     
-    func signUpViaFB(completion: @escaping (Bool) -> ()){
-        let loginManager = FBSDKLoginManager()
-        let vc = UIApplication.topViewController()!
-        loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc){ (result, error) in
-            //if we have an error display it and abort
-            if let error = error {
-                vc.showError(error: error.localizedDescription)
+    func signUpViaFB(){
+        let loginManager = LoginManager()
+        guard let vc = UIApplication.topViewController() else { return }
+        loginManager.logIn(permissions: ["public_profile", "email"], from: vc) { [weak self] result, error in
+            //if we ha
+            if let err = error {
+                self?.delegate?.onSignUpError(err.localizedDescription)
                 return
             }
-            //make sure we have a result, otherwise abort
             guard let result = result else {
-                vc.showError(error: "Facebook Autorization - unable to get result")
+                self?.delegate?.onSignUpError(Localizable.errorFbEmptyResult())
                 return
             }
-            //if cancelled nothing todo
-            if result.isCancelled {
-                vc.showError(error: "Facebook Autorization canceled by user")
+            guard !result.isCancelled else {
+                self?.delegate?.onSignUpError(Localizable.errorFbCanceledByUser())
                 return
             }
-            // Firebase redirect
-            guard let accessToken = FBSDKAccessToken.current() else {
-                vc.showError(error: "Failed to get access token")
+            guard let accessToken = AccessToken.current else {
+                self?.delegate?.onSignUpError(Localizable.errorFbAccessTokenNil())
                 return
             }
-            
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-            
-            // Perform login by calling Firebase APIs
-            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                if let error = error {
-                    vc.showError(error: "Firebase Autorization error")
+            SessionManager.shared.signInWithFacebook(token: accessToken, completion: { (authResult, error) in
+                guard let _ = error, let auth = authResult else {
+                    self?.delegate?.onSignUpError(error?.localizedDescription ??
+                        Localizable.errorEmptyEntity(String(describing: authResult.self)))
                     return
                 }
-                self.defaults.set(authResult!.user.email!, forKey: "email")
-                //                ListenerManager.sharedInstance.observeUserProfile(uid: authResult!.user.uid)
-                completion(true)
-            }
+                self?.delegate?.onSignUpSucess(auth)
+            })
         }
     }
     
@@ -142,41 +123,29 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     // Present a view that prompts the user to sign in with Google
     func sign(_ signIn: GIDSignIn!,
               present viewController: UIViewController!) {
-        print("present")
         UIApplication.topViewController()!.present(viewController, animated: true, completion: nil)
     }
     
     // Dismiss the "Sign in with Google" view
     func sign(_ signIn: GIDSignIn!,
               dismiss viewController: UIViewController!) {
-        print("dismiss")
         UIApplication.topViewController()!.dismiss(animated: true, completion: nil)
     }
     
     // MARK: GIDSignIn.sharedInstance().delegate methods
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
-        let vc = UIApplication.topViewController()!
         if let error = error {
-            vc.showError(error: error.localizedDescription)
+            delegate?.onSignUpError(error.localizedDescription)
         } else {
             guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                           accessToken: authentication.accessToken)
-            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                if let error = error {
-                    vc.showError(error: error.localizedDescription)
+            SessionManager.shared.signInWithGmail(auth: authentication) { (authResult, authError) in
+                guard let _ = authError, let auth = authResult else {
+                    self.delegate?.onSignUpError(authError?.localizedDescription ??
+                        Localizable.errorEmptyEntity(String(describing: authResult.self)))
                     return
-                } else {
-                    // Perform any operations on signed in user here.
-                    let userId = user.userID ?? "default_id"
-                    // For client-side use only!
-                    // TODO: Save user data to key chain
-                    self.defaults.set(user.profile.email, forKey: "email")
-                    if let rootVC = UIApplication.topViewController(){
-                        rootVC.present(MainVC(), animated: true, completion: nil)
-                    }
                 }
+                self.delegate?.onSignUpSucess(auth)
             }
         }
     }
@@ -188,37 +157,19 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     
     // MARK: Validate new user data
     
-    func validateInputs(user: UserModel) -> (Bool, String) {
-        let isEmail = user.email.isValidEmail()
-        let isPassword = user.password?.isValidPassword() ?? false
-        let isFirtsName = !(user.firstName?.isEmpty ?? true)
-        let isSecondName = !(user.lastName?.isEmpty ?? true)
-        let results = [isEmail, isPassword, isFirtsName, isSecondName]
-        let is_success = isEmail && isPassword && isFirtsName && isSecondName
-        switch is_success {
-        case true:
-            return (true, "All OK")
-        case false:
-            for (index, value) in results.enumerated(){
-                if(value){
-                    continue
-                } else {
-                    switch index{
-                    case 0:
-                        return (false, "Invalid email")
-                    case 1:
-                        return (false, "Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols")
-                    case 2:
-                        return (false, "Empry first name")
-                    case 3:
-                        return (false, "Empry second name")
-                    default:
-                        break
-                    }
-                }
-            }
+    func validateInputs(user: UserModel) throws {
+        guard user.email.isValidEmail() else {
+            throw EntranceError.invalidEmail
         }
-        return (true, "All OK")
+        guard let password = user.password, password.isValidPassword() else {
+            throw EntranceError.invalidPassword
+        }
+        guard let firstName = user.firstName, firstName.notEmpty() else {
+            throw EntranceError.emptyField(fieldName: Localizable.signUpFirstName())
+        }
+        guard let lastName = user.lastName, lastName.notEmpty() else {
+            throw EntranceError.emptyField(fieldName: Localizable.signUpSecondName())
+        }
     }
     
     // MARK: Validation for sign in

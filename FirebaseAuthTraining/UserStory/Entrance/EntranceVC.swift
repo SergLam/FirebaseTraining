@@ -8,8 +8,10 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import SCLAlertView
 
-class EntranceVC: UIViewController {
+final class EntranceVC: UIViewController {
     
     private var childControllers: [UIViewController] = []
     private let containerView = UIView()
@@ -100,8 +102,24 @@ class EntranceVC: UIViewController {
         self.containerView.addSubview(vc.view)
     }
     
-    func showMainVC(){
-        self.present(MainVC(), animated: true, completion: nil)
+}
+
+extension EntranceVC: EntranceVMDelegate {
+    
+    func onSignUpSucess(_ auth: AuthDataResult) {
+        present(MainVC(), animated: true, completion: nil)
+    }
+    
+    func onSignUpError(_ error: String) {
+        SCLAlertView().showError(Localizable.errorAlertTitle(), subTitle: error)
+    }
+    
+    func onResetPasswordSucess() {
+        SCLAlertView().showSuccess(Localizable.alertSuccessTitle(), subTitle: Localizable.resetPasswordMessage())
+    }
+    
+    func onResetPasswordError(_ error: String) {
+        SCLAlertView().showError(Localizable.errorAlertTitle(), subTitle: error)
     }
     
 }

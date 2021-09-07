@@ -11,13 +11,13 @@ import SkyFloatingLabelTextField
 import GoogleSignIn
 import Closures
 
-protocol SignUpViewDelegate: class {
+protocol SignUpViewDelegate: AnyObject {
     func didTapLinkInLabel(_ urlString: String)
     func didTapSignUpButton()
     func didTapFacebookLoginButton()
 }
 
-class SignUpView: UIView {
+final class SignUpView: UIView {
     
     weak var delegate: SignUpViewDelegate?
     
@@ -26,7 +26,7 @@ class SignUpView: UIView {
     private let email = SkyFloatingLabelTextField()
     private let password = SkyFloatingLabelTextField()
     
-    var userInput: [String] = []
+    var userInput: [String] = ["","","",""]
     private let fieldTags = [1,2,3,4]
     
     private let signUpButton = UIButton()
@@ -147,7 +147,9 @@ class SignUpView: UIView {
         termsAndConditions.text = R.string.localizable.signUpRules()
         termsAndConditions.textAlignment = .center
         termsAndConditions.textColor = UIColor.overcastBlue
-        termsAndConditions.font = UIFont.systemFont(ofSize: 14)
+        termsAndConditions.adjustsFontSizeToFitWidth = true
+        termsAndConditions.minimumScaleFactor = 0.1
+        termsAndConditions.font = UIFont.systemFont(ofSize: 25)
         termsAndConditions.highLightLinksInText(links: [R.string.localizable.signUpTerms(), R.string.localizable.signUpPrivacy()])
         termsAndConditions.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapTermsAndConditionsLabel))

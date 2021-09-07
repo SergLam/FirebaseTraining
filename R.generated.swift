@@ -11,25 +11,114 @@ import UIKit
 struct R: Rswift.Validatable {
   fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
   fileprivate static let hostingBundle = Bundle(for: R.Class.self)
-  
+
+  /// Find first language and bundle for which the table exists
+  fileprivate static func localeBundle(tableName: String, preferredLanguages: [String]) -> (Foundation.Locale, Foundation.Bundle)? {
+    // Filter preferredLanguages to localizations, use first locale
+    var languages = preferredLanguages
+      .map(Locale.init)
+      .prefix(1)
+      .flatMap { locale -> [String] in
+        if hostingBundle.localizations.contains(locale.identifier) {
+          if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
+            return [locale.identifier, language]
+          } else {
+            return [locale.identifier]
+          }
+        } else if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
+          return [language]
+        } else {
+          return []
+        }
+      }
+
+    // If there's no languages, use development language as backstop
+    if languages.isEmpty {
+      if let developmentLocalization = hostingBundle.developmentLocalization {
+        languages = [developmentLocalization]
+      }
+    } else {
+      // Insert Base as second item (between locale identifier and languageCode)
+      languages.insert("Base", at: 1)
+
+      // Add development language as backstop
+      if let developmentLocalization = hostingBundle.developmentLocalization {
+        languages.append(developmentLocalization)
+      }
+    }
+
+    // Find first language for which table exists
+    // Note: key might not exist in chosen language (in that case, key will be shown)
+    for language in languages {
+      if let lproj = hostingBundle.url(forResource: language, withExtension: "lproj"),
+         let lbundle = Bundle(url: lproj)
+      {
+        let strings = lbundle.url(forResource: tableName, withExtension: "strings")
+        let stringsdict = lbundle.url(forResource: tableName, withExtension: "stringsdict")
+
+        if strings != nil || stringsdict != nil {
+          return (Locale(identifier: language), lbundle)
+        }
+      }
+    }
+
+    // If table is available in main bundle, don't look for localized resources
+    let strings = hostingBundle.url(forResource: tableName, withExtension: "strings", subdirectory: nil, localization: nil)
+    let stringsdict = hostingBundle.url(forResource: tableName, withExtension: "stringsdict", subdirectory: nil, localization: nil)
+
+    if strings != nil || stringsdict != nil {
+      return (applicationLocale, hostingBundle)
+    }
+
+    // If table is not found for requested languages, key will be shown
+    return nil
+  }
+
+  /// Load string from Info.plist file
+  fileprivate static func infoPlistString(path: [String], key: String) -> String? {
+    var dict = hostingBundle.infoDictionary
+    for step in path {
+      guard let obj = dict?[step] as? [String: Any] else { return nil }
+      dict = obj
+    }
+    return dict?[key] as? String
+  }
+
   static func validate() throws {
     try intern.validate()
   }
-  
+
+  #if os(iOS) || os(tvOS)
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  struct storyboard {
+    /// Storyboard `LaunchScreen`.
+    static let launchScreen = _R.storyboard.launchScreen()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
+    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+  #endif
+
   /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
     /// Resource file `GoogleService-Info.plist`.
     static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
-    
+
     /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
     static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.googleServiceInfoPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
-    
+
     fileprivate init() {}
   }
-  
+
   /// This `R.image` struct is generated, and contains static references to 5 images.
   struct image {
     /// Image `chat_tab`.
@@ -42,242 +131,526 @@ struct R: Rswift.Validatable {
     static let profile_tab = Rswift.ImageResource(bundle: R.hostingBundle, name: "profile_tab")
     /// Image `splash_ic`.
     static let splash_ic = Rswift.ImageResource(bundle: R.hostingBundle, name: "splash_ic")
-    
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "chat_tab", bundle: ..., traitCollection: ...)`
     static func chat_tab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.chat_tab, compatibleWith: traitCollection)
     }
-    
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "contacts_tab", bundle: ..., traitCollection: ...)`
     static func contacts_tab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.contacts_tab, compatibleWith: traitCollection)
     }
-    
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "map_tab", bundle: ..., traitCollection: ...)`
     static func map_tab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.map_tab, compatibleWith: traitCollection)
     }
-    
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "profile_tab", bundle: ..., traitCollection: ...)`
     static func profile_tab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.profile_tab, compatibleWith: traitCollection)
     }
-    
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "splash_ic", bundle: ..., traitCollection: ...)`
     static func splash_ic(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.splash_ic, compatibleWith: traitCollection)
     }
-    
+    #endif
+
     fileprivate init() {}
   }
-  
-  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
-  struct storyboard {
-    /// Storyboard `LaunchScreen`.
-    static let launchScreen = _R.storyboard.launchScreen()
-    
-    /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
-    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    
-    fileprivate init() {}
-  }
-  
+
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 22 localization keys.
     struct localizable {
+      /// en translation: %@ entity is empty
+      ///
+      /// Locales: en
+      static let errorEmptyEntity = Rswift.StringResource(key: "error.empty-entity", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: %@ field is empty.
+      ///
+      /// Locales: en
+      static let errorEmptyField = Rswift.StringResource(key: "error.empty-field", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: An email with password reset link has been sent. Check your email, please.
+      ///
+      /// Locales: en
+      static let resetPasswordMessage = Rswift.StringResource(key: "reset-password-message", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
-      /// 
+      ///
       /// Locales: en
       static let signUpRules = Rswift.StringResource(key: "signUp.rules", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Email
-      /// 
+      ///
       /// Locales: en
       static let entranceEmail = Rswift.StringResource(key: "entrance.email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Error
-      /// 
+      ///
       /// Locales: en
       static let errorAlertTitle = Rswift.StringResource(key: "error.alertTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Facebook Autorization - unable to get result
+      ///
+      /// Locales: en
+      static let errorFbEmptyResult = Rswift.StringResource(key: "error.fb-empty-result", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Facebook Autorization canceled by user
+      ///
+      /// Locales: en
+      static let errorFbCanceledByUser = Rswift.StringResource(key: "error.fb-canceled-by-user", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Failed to get access token
+      ///
+      /// Locales: en
+      static let errorFbAccessTokenNil = Rswift.StringResource(key: "error.fb-access-token-nil", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: First Name
-      /// 
+      ///
       /// Locales: en
       static let signUpFirstName = Rswift.StringResource(key: "signUp.firstName", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Forgot password?
-      /// 
+      ///
       /// Locales: en
       static let signInForgotPassword = Rswift.StringResource(key: "signIn.forgotPassword", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Invalid email
-      /// 
+      ///
       /// Locales: en
       static let errorInvalidEmail = Rswift.StringResource(key: "error.invalid-email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols
-      /// 
+      ///
       /// Locales: en
       static let errorInvalidPassword = Rswift.StringResource(key: "error.invalid-password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Password
-      /// 
+      ///
       /// Locales: en
       static let entrancePassword = Rswift.StringResource(key: "entrance.password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Privacy Policy
-      /// 
+      ///
       /// Locales: en
       static let signUpPrivacy = Rswift.StringResource(key: "signUp.privacy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Restore password
+      ///
+      /// Locales: en
+      static let resetPasswordTitle = Rswift.StringResource(key: "reset-password-title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Second Name
-      /// 
+      ///
       /// Locales: en
       static let signUpSecondName = Rswift.StringResource(key: "signUp.secondName", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Sign In
-      /// 
+      ///
       /// Locales: en
       static let signInButton = Rswift.StringResource(key: "signIn.button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Sign Up
-      /// 
+      ///
       /// Locales: en
       static let signUpButton = Rswift.StringResource(key: "signUp.button", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Something went wrong
+      ///
+      /// Locales: en
+      static let errorUnknown = Rswift.StringResource(key: "error.unknown", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Success!
+      ///
+      /// Locales: en
+      static let alertSuccessTitle = Rswift.StringResource(key: "alert.success-title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Terms & Conditions
-      /// 
+      ///
       /// Locales: en
       static let signUpTerms = Rswift.StringResource(key: "signUp.terms", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
-      
+
+      /// en translation: %@ entity is empty
+      ///
+      /// Locales: en
+      static func errorEmptyEntity(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("error.empty-entity", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.empty-entity"
+        }
+
+        let format = NSLocalizedString("error.empty-entity", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// en translation: %@ field is empty.
+      ///
+      /// Locales: en
+      static func errorEmptyField(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("error.empty-field", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.empty-field"
+        }
+
+        let format = NSLocalizedString("error.empty-field", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// en translation: An email with password reset link has been sent. Check your email, please.
+      ///
+      /// Locales: en
+      static func resetPasswordMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("reset-password-message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "reset-password-message"
+        }
+
+        return NSLocalizedString("reset-password-message", bundle: bundle, comment: "")
+      }
+
       /// en translation: By signing up, you agree to our  Terms & Conditions and Privacy Policy
-      /// 
+      ///
       /// Locales: en
-      static func signUpRules(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.rules", bundle: R.hostingBundle, comment: "")
+      static func signUpRules(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.rules", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.rules"
+        }
+
+        return NSLocalizedString("signUp.rules", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Email
-      /// 
+      ///
       /// Locales: en
-      static func entranceEmail(_: Void = ()) -> String {
-        return NSLocalizedString("entrance.email", bundle: R.hostingBundle, comment: "")
+      static func entranceEmail(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("entrance.email", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "entrance.email"
+        }
+
+        return NSLocalizedString("entrance.email", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Error
-      /// 
+      ///
       /// Locales: en
-      static func errorAlertTitle(_: Void = ()) -> String {
-        return NSLocalizedString("error.alertTitle", bundle: R.hostingBundle, comment: "")
+      static func errorAlertTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.alertTitle", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.alertTitle"
+        }
+
+        return NSLocalizedString("error.alertTitle", bundle: bundle, comment: "")
       }
-      
+
+      /// en translation: Facebook Autorization - unable to get result
+      ///
+      /// Locales: en
+      static func errorFbEmptyResult(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.fb-empty-result", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.fb-empty-result"
+        }
+
+        return NSLocalizedString("error.fb-empty-result", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Facebook Autorization canceled by user
+      ///
+      /// Locales: en
+      static func errorFbCanceledByUser(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.fb-canceled-by-user", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.fb-canceled-by-user"
+        }
+
+        return NSLocalizedString("error.fb-canceled-by-user", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Failed to get access token
+      ///
+      /// Locales: en
+      static func errorFbAccessTokenNil(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.fb-access-token-nil", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.fb-access-token-nil"
+        }
+
+        return NSLocalizedString("error.fb-access-token-nil", bundle: bundle, comment: "")
+      }
+
       /// en translation: First Name
-      /// 
+      ///
       /// Locales: en
-      static func signUpFirstName(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.firstName", bundle: R.hostingBundle, comment: "")
+      static func signUpFirstName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.firstName", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.firstName"
+        }
+
+        return NSLocalizedString("signUp.firstName", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Forgot password?
-      /// 
+      ///
       /// Locales: en
-      static func signInForgotPassword(_: Void = ()) -> String {
-        return NSLocalizedString("signIn.forgotPassword", bundle: R.hostingBundle, comment: "")
+      static func signInForgotPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signIn.forgotPassword", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signIn.forgotPassword"
+        }
+
+        return NSLocalizedString("signIn.forgotPassword", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Invalid email
-      /// 
+      ///
       /// Locales: en
-      static func errorInvalidEmail(_: Void = ()) -> String {
-        return NSLocalizedString("error.invalid-email", bundle: R.hostingBundle, comment: "")
+      static func errorInvalidEmail(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.invalid-email", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.invalid-email"
+        }
+
+        return NSLocalizedString("error.invalid-email", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Invalid password - Should contains at least one digit, lower case letter, upper case letter and should contains at least 8 symbols
-      /// 
+      ///
       /// Locales: en
-      static func errorInvalidPassword(_: Void = ()) -> String {
-        return NSLocalizedString("error.invalid-password", bundle: R.hostingBundle, comment: "")
+      static func errorInvalidPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.invalid-password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.invalid-password"
+        }
+
+        return NSLocalizedString("error.invalid-password", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Password
-      /// 
+      ///
       /// Locales: en
-      static func entrancePassword(_: Void = ()) -> String {
-        return NSLocalizedString("entrance.password", bundle: R.hostingBundle, comment: "")
+      static func entrancePassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("entrance.password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "entrance.password"
+        }
+
+        return NSLocalizedString("entrance.password", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Privacy Policy
-      /// 
+      ///
       /// Locales: en
-      static func signUpPrivacy(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.privacy", bundle: R.hostingBundle, comment: "")
+      static func signUpPrivacy(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.privacy", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.privacy"
+        }
+
+        return NSLocalizedString("signUp.privacy", bundle: bundle, comment: "")
       }
-      
+
+      /// en translation: Restore password
+      ///
+      /// Locales: en
+      static func resetPasswordTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("reset-password-title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "reset-password-title"
+        }
+
+        return NSLocalizedString("reset-password-title", bundle: bundle, comment: "")
+      }
+
       /// en translation: Second Name
-      /// 
+      ///
       /// Locales: en
-      static func signUpSecondName(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.secondName", bundle: R.hostingBundle, comment: "")
+      static func signUpSecondName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.secondName", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.secondName"
+        }
+
+        return NSLocalizedString("signUp.secondName", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Sign In
-      /// 
+      ///
       /// Locales: en
-      static func signInButton(_: Void = ()) -> String {
-        return NSLocalizedString("signIn.button", bundle: R.hostingBundle, comment: "")
+      static func signInButton(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signIn.button", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signIn.button"
+        }
+
+        return NSLocalizedString("signIn.button", bundle: bundle, comment: "")
       }
-      
+
       /// en translation: Sign Up
-      /// 
+      ///
       /// Locales: en
-      static func signUpButton(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.button", bundle: R.hostingBundle, comment: "")
+      static func signUpButton(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.button", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.button"
+        }
+
+        return NSLocalizedString("signUp.button", bundle: bundle, comment: "")
       }
-      
+
+      /// en translation: Something went wrong
+      ///
+      /// Locales: en
+      static func errorUnknown(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("error.unknown", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "error.unknown"
+        }
+
+        return NSLocalizedString("error.unknown", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Success!
+      ///
+      /// Locales: en
+      static func alertSuccessTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("alert.success-title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "alert.success-title"
+        }
+
+        return NSLocalizedString("alert.success-title", bundle: bundle, comment: "")
+      }
+
       /// en translation: Terms & Conditions
-      /// 
+      ///
       /// Locales: en
-      static func signUpTerms(_: Void = ()) -> String {
-        return NSLocalizedString("signUp.terms", bundle: R.hostingBundle, comment: "")
+      static func signUpTerms(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("signUp.terms", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "signUp.terms"
+        }
+
+        return NSLocalizedString("signUp.terms", bundle: bundle, comment: "")
       }
-      
+
       fileprivate init() {}
     }
-    
+
     fileprivate init() {}
   }
-  
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
     }
-    
+
     fileprivate init() {}
   }
-  
+
   fileprivate class Class {}
-  
+
   fileprivate init() {}
 }
 
 struct _R: Rswift.Validatable {
   static func validate() throws {
+    #if os(iOS) || os(tvOS)
     try storyboard.validate()
+    #endif
   }
-  
+
+  #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
+      #if os(iOS) || os(tvOS)
       try launchScreen.validate()
+      #endif
     }
-    
+
+    #if os(iOS) || os(tvOS)
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UIViewController
-      
+
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
-      
+
       static func validate() throws {
         if UIKit.UIImage(named: "splash_ic", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'splash_ic' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
-      
+
       fileprivate init() {}
     }
-    
+    #endif
+
     fileprivate init() {}
   }
-  
+  #endif
+
   fileprivate init() {}
 }

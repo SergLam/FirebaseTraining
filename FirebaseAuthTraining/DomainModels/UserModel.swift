@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class UserModel: Codable {
+public final class UserModel: Codable {
     
     var uid: String = ""
     var createdAt: String = ""
@@ -48,7 +48,8 @@ public class UserModel: Codable {
         do{
             model = try jsonDecoder.decode(UserModel.self, from: data as! Data)
         } catch {
-            debugPrint(error)
+            assertionFailure(error.localizedDescription)
+            return nil
         }
         return model
     }

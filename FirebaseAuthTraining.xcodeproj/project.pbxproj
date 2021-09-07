@@ -11,7 +11,6 @@
 		7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D21F22104D00D00EDB99D /* EntranceVC.swift */; };
 		7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */; };
 		7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */; };
-		7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */; };
 		7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE77421147DC60069C080 /* ListenerManager.swift */; };
 		7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DE7792114A4490069C080 /* MainVC.swift */; };
 		7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60566A2107A6D5008CF278 /* AppColors.swift */; };
@@ -28,6 +27,7 @@
 		7C9AE0612104C34100DA1D50 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AE0602104C34100DA1D50 /* SignInVC.swift */; };
 		7C9AE0662104C34200DA1D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0652104C34200DA1D50 /* Assets.xcassets */; };
 		7C9AE0692104C34200DA1D50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C9AE0672104C34200DA1D50 /* LaunchScreen.storyboard */; };
+		7C9B14942230F4BA0041DF37 /* VendorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9B14932230F4BA0041DF37 /* VendorService.swift */; };
 		7CA305D72157D2AF009EB7D2 /* MyProfileTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */; };
 		7CA4B9D82108A6E7007CA0C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */; };
 		7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */; };
@@ -35,22 +35,26 @@
 		7CB98A332109E4EF0049B00F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */; };
 		7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* UIViewController+Ext.swift */; };
 		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
-		7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */; };
 		7CDE31DE2145906B00D3C5FD /* MyProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */; };
+		7CE44DC12211721100569A0B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC02211721100569A0B /* AppState.swift */; };
+		7CE44DC3221172A600569A0B /* AppReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC2221172A600569A0B /* AppReducers.swift */; };
+		7CE44DC5221172C400569A0B /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC4221172C400569A0B /* UserActions.swift */; };
 		7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF175220EDF5700D231C9 /* SignInView.swift */; };
 		7CEBF179220F2BF400D231C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBF17B220F2BF400D231C9 /* Localizable.strings */; };
 		7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF17D220F384F00D231C9 /* AppRouter.swift */; };
+		7CEBF180220F831D00D231C9 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF17F220F831D00D231C9 /* SessionManager.swift */; };
+		7CEBF182220F86BD00D231C9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF181220F86BD00D231C9 /* AppConstants.swift */; };
 		7CECDAC921B2A54900D8EC65 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CECDAC821B2A54900D8EC65 /* MyProfileView.swift */; };
-		88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */; };
+		AE7B6D6D12AC9A676E40BFE6 /* Pods_App_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
 		52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.debug.xcconfig"; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
 		7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Ext.swift"; sourceTree = "<group>"; };
 		7C1ADDCB22074BEE00F70F2C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalURLOpenable.swift; sourceTree = "<group>"; };
 		7C3DE77421147DC60069C080 /* ListenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerManager.swift; sourceTree = "<group>"; };
 		7C3DE7792114A4490069C080 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7C60566A2107A6D5008CF278 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 		7C9AE0652104C34200DA1D50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C9AE0682104C34200DA1D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C9AE06A2104C34200DA1D50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C9B14932230F4BA0041DF37 /* VendorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorService.swift; sourceTree = "<group>"; };
 		7CA305D62157D2AF009EB7D2 /* MyProfileTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableDelegate.swift; sourceTree = "<group>"; };
 		7CA4B9D72108A6E7007CA0C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7CA4B9DD2108A9B2007CA0C3 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -76,14 +81,19 @@
 		7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CB98A352109E9890049B00F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
-		7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsEvents.swift; sourceTree = "<group>"; };
 		7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVM.swift; sourceTree = "<group>"; };
+		7CE44DC02211721100569A0B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		7CE44DC2221172A600569A0B /* AppReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducers.swift; sourceTree = "<group>"; };
+		7CE44DC4221172C400569A0B /* UserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
 		7CEBF175220EDF5700D231C9 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		7CEBF17A220F2BF400D231C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7CEBF17D220F384F00D231C9 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		7CEBF17F220F831D00D231C9 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		7CEBF181220F86BD00D231C9 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7CECDAC821B2A54900D8EC65 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-FirebaseAuthTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining.debug.xcconfig"; sourceTree = "<group>"; };
 		D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
-		E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */,
+				AE7B6D6D12AC9A676E40BFE6 /* Pods_App_FirebaseAuthTraining.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +176,6 @@
 				7CA80DA52108CA850056450F /* UIApplication+Ext.swift */,
 				7C65E481210DB74700BAE570 /* String+Ext.swift */,
 				7C174D7A21888A820097CBDE /* UITapGestureRecognizer+Ext.swift */,
-				7C1ADDCD220753FD00F70F2C /* ExternalURLOpenable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 		7C9AE05D2104C34100DA1D50 /* FirebaseAuthTraining */ = {
 			isa = PBXGroup;
 			children = (
+				7CE44DBF22116AC600569A0B /* Redux */,
 				7CEBF17C220F383500D231C9 /* Services */,
 				7CD9CA8E212A065E007AC789 /* CustomViews */,
 				7C9752962109AE9100F3251A /* DomainModels */,
@@ -251,7 +261,6 @@
 		7CDE31DB2145900B00D3C5FD /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */,
 				7C91F5AD2116F78600551719 /* MapVC.swift */,
 			);
 			path = Map;
@@ -268,6 +277,16 @@
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
+		7CE44DBF22116AC600569A0B /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				7CE44DC02211721100569A0B /* AppState.swift */,
+				7CE44DC2221172A600569A0B /* AppReducers.swift */,
+				7CE44DC4221172C400569A0B /* UserActions.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
 		7CEBF174220EDEB900D231C9 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +301,9 @@
 			children = (
 				7CA4B9D62108A6C3007CA0C3 /* Networking */,
 				7CEBF17D220F384F00D231C9 /* AppRouter.swift */,
+				7CEBF17F220F831D00D231C9 /* SessionManager.swift */,
+				7CEBF181220F86BD00D231C9 /* AppConstants.swift */,
+				7C9B14932230F4BA0041DF37 /* VendorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -289,7 +311,7 @@
 		84FCD57B9C359E304FE62577 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */,
+				E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,6 +321,8 @@
 			children = (
 				52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */,
 				D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */,
+				B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */,
+				4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -334,7 +358,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = SergLam;
 				TargetAttributes = {
 					7C9AE05A2104C34100DA1D50 = {
@@ -386,7 +410,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FirebaseAuthTraining-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-App-FirebaseAuthTraining-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -398,71 +422,14 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Closures/Closures.framework",
-				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
-				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Closures.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		621642A1C0E65FDC055717ED /* [CP] Copy Pods Resources */ = {
@@ -470,21 +437,14 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			inputFileListPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			outputFileListPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7C0285562106222C00CEB8FC /* R.Swift */ = {
@@ -516,11 +476,14 @@
 				7C3DE77A2114A4490069C080 /* MainVC.swift in Sources */,
 				7C6056732107B645008CF278 /* UIButton+Ext.swift in Sources */,
 				7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */,
+				7CE44DC12211721100569A0B /* AppState.swift in Sources */,
 				7C91F5AE2116F78600551719 /* MapVC.swift in Sources */,
+				7CE44DC3221172A600569A0B /* AppReducers.swift in Sources */,
 				7C174D7B21888A820097CBDE /* UITapGestureRecognizer+Ext.swift in Sources */,
 				7CEBF17E220F384F00D231C9 /* AppRouter.swift in Sources */,
 				7CEBF176220EDF5700D231C9 /* SignInView.swift in Sources */,
-				7C1ADDCE220753FD00F70F2C /* ExternalURLOpenable.swift in Sources */,
+				7C9B14942230F4BA0041DF37 /* VendorService.swift in Sources */,
+				7CEBF182220F86BD00D231C9 /* AppConstants.swift in Sources */,
 				7C0D21F32104D00D00EDB99D /* EntranceVC.swift in Sources */,
 				7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */,
 				7C91F5B22116F7EC00551719 /* UsersVC.swift in Sources */,
@@ -530,13 +493,14 @@
 				7C91F5B02116F7D500551719 /* ChatsVC.swift in Sources */,
 				7C91F5B42116F80100551719 /* MyProfileVC.swift in Sources */,
 				7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */,
+				7CEBF180220F831D00D231C9 /* SessionManager.swift in Sources */,
 				7CECDAC921B2A54900D8EC65 /* MyProfileView.swift in Sources */,
-				7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,
 				7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */,
 				7C65E482210DB74700BAE570 /* String+Ext.swift in Sources */,
 				7C60566F2107ACAA008CF278 /* SkyFloatingLabelTextField.swift in Sources */,
 				7C3DE77521147DC60069C080 /* ListenerManager.swift in Sources */,
+				7CE44DC5221172C400569A0B /* UserActions.swift in Sources */,
 				7CA4B9DE2108A9B2007CA0C3 /* UILabel.swift in Sources */,
 				7CA80DA62108CA850056450F /* UIApplication+Ext.swift in Sources */,
 				7C9AE05F2104C34100DA1D50 /* AppDelegate.swift in Sources */,
@@ -592,6 +556,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -617,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -654,6 +619,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -673,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -685,13 +651,13 @@
 		};
 		7C9AE06E2104C34200DA1D50 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */;
+			baseConfigurationReference = B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -705,13 +671,13 @@
 		};
 		7C9AE06F2104C34200DA1D50 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */;
+			baseConfigurationReference = 4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

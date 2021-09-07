@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyProfileTableDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+final class MyProfileTableDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     let headers: [[String]] = [["Phone", "Email"], ["Change password", "FAQ", "Contact Us"], ["Log out"]]
     

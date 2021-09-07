@@ -13,12 +13,12 @@ import SkyFloatingLabelTextField
 import SafariServices
 import GoogleSignIn
 
-class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDSignInUIDelegate {
+final class SignUpVC: UIViewController {
     
-    var parentVC: EntranceVC?
+    private var parentVC: EntranceVC?
     
-    let contentView = SignUpView()
-    let viewModel = EntranceVM.sharedInstance
+    private let contentView = SignUpView()
+    private let viewModel = EntranceVM.sharedInstance
     
     convenience init(parent: EntranceVC){
         self.init(nibName:nil, bundle:nil)
@@ -27,7 +27,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = viewModel
+        contentView.delegate = self
+        viewModel.delegate = parentVC
+        GIDSignIn.sharedInstance().delegate = viewModel
         self.hideKeyboardOnTap()
         configureUI()
     }
@@ -41,30 +43,52 @@ class SignUpVC: UIViewController, UITextFieldDelegate, ExternalURLOpenable, GIDS
     
 }
 
-extension SignUpVC: SignUpViewDelegate {
+// MARK: - GIDSignInDelegate
+extension SignUpVC: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension SignUpVC: UITextFieldDelegate {
+    
+}
+
+// MARK: - SFSafariViewControllerDelegate
+extension SignUpVC: SignUpViewDelegate, SFSafariViewControllerDelegate {
     func didTapLinkInLabel(_ urlString: String) {
         openURL(urlString)
+    }
+    
+    func openURL(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        parentVC?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func didTapSignUpButton() {
         let input = contentView.userInput
         let user = UserModel(firstName: input[0], lastName: input[1], email: input[2], password: input[3])
-        let validation = viewModel.validateInputs(user: user)
-        if(validation.0){
-            debugPrint("Sign Up")
-            viewModel.signUp(email: input[2], password: input[3]){ completion in
-                if(completion){
-                    self.parentVC?.showMainVC()
-                }
-            }
-        } else {
-            self.showError(error: validation.1)
+        do {
+            try viewModel.validateInputs(user: user)
+        } catch {
+            guard let error = error as? EntranceError else { return }
+            self.showError(error: error.description)
+            return
         }
+        viewModel.signUp(email: input[2], password: input[3])
     }
     
     func didTapFacebookLoginButton() {
-        viewModel.signUpViaFB(){ completion in
-            self.parentVC?.showMainVC()
-        }
+        viewModel.signUpViaFB()
     }
 }

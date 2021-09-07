@@ -12,13 +12,13 @@ import SnapKit
 import GoogleSignIn
 import Closures
 
-protocol SignInViewDelegate: class {
+protocol SignInViewDelegate: AnyObject {
     func didTapSignInButton(email: String, password: String)
     func didTapRestorePasswordButton()
     func didTapFBLoginButton()
 }
 
-class SignInView: UIView {
+final class SignInView: UIView {
     
     weak var delegate: SignInViewDelegate?
     

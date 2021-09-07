@@ -37,4 +37,9 @@ extension String{
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", regExp)
         return emailPredicate.evaluate(with: self)
     }
+    
+    func notEmpty() -> Bool {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return !trimmed.isEmpty
+    }
 }

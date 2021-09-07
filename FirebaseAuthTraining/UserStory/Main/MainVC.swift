@@ -9,15 +9,15 @@
 import UIKit
 import ESTabBarController_swift
 
-class MainVC: ESTabBarController {
+final class MainVC: ESTabBarController {
     
-    let mapVC = MapVC()
+    private let mapVC = MapVC()
     
-    let chatsVC = ChatsVC()
+    private let chatsVC = ChatsVC()
     
-    let usersVC = UsersVC()
+    private let usersVC = UsersVC()
     
-    let myProfileVC = MyProfileVC()
+    private let myProfileVC = MyProfileVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class MainVC: ESTabBarController {
     }
     
     func configureTabBar(){
-        mapVC.tabBarItem = ESTabBarItem.init(ESTabBarItemContentView(), title: "Map", image: R.image.map_tab(), selectedImage: nil, tag: 0)
-        chatsVC.tabBarItem = ESTabBarItem.init(ESTabBarItemContentView(), title: "Chats", image: R.image.chat_tab(), selectedImage: nil, tag: 1)
-        usersVC.tabBarItem = ESTabBarItem.init(ESTabBarItemContentView(), title: "Contacts", image: R.image.contacts_tab(), selectedImage: nil, tag: 2)
-        myProfileVC.tabBarItem = ESTabBarItem.init(ESTabBarItemContentView(), title: "My Profile", image: R.image.profile_tab(), selectedImage: nil, tag: 3)
+        mapVC.tabBarItem = ESTabBarItem(ESTabBarItemContentView(), title: "Map", image: R.image.map_tab(), selectedImage: nil, tag: 0)
+        chatsVC.tabBarItem = ESTabBarItem(ESTabBarItemContentView(), title: "Chats", image: R.image.chat_tab(), selectedImage: nil, tag: 1)
+        usersVC.tabBarItem = ESTabBarItem(ESTabBarItemContentView(), title: "Contacts", image: R.image.contacts_tab(), selectedImage: nil, tag: 2)
+        myProfileVC.tabBarItem = ESTabBarItem(ESTabBarItemContentView(), title: "My Profile", image: R.image.profile_tab(), selectedImage: nil, tag: 3)
         let controllers = [mapVC, chatsVC, usersVC, myProfileVC]
         self.tabBar.isTranslucent = false
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
