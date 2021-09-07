@@ -9,15 +9,15 @@
 import UIKit
 import ESTabBarController_swift
 
-class MainVC: ESTabBarController {
+final class MainVC: ESTabBarController {
     
-    let mapVC = MapVC()
+    private let mapVC = MapVC()
     
-    let chatsVC = ChatsVC()
+    private let chatsVC = ChatsVC()
     
-    let usersVC = UsersVC()
+    private let usersVC = UsersVC()
     
-    let myProfileVC = MyProfileVC()
+    private let myProfileVC = MyProfileVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()

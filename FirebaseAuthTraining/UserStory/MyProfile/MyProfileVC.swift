@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MyProfileVC: UIViewController {
+final class MyProfileVC: UIViewController {
         
     let viewModel = MyProfileVM()
     let user_info_delegate = MyProfileTableDelegate()

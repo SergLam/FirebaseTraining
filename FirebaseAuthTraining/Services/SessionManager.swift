@@ -15,7 +15,7 @@ import FirebaseAuth
 
 typealias firebaseAuthResult = (AuthDataResult?, Error?) -> ()
 
-class SessionManager {
+final class SessionManager {
     
     static let shared = SessionManager()
     
@@ -57,9 +57,9 @@ class SessionManager {
     
     // MARK: Meth
     
-    func signInWithFacebook(token: FBSDKAccessToken, completion: @escaping firebaseAuthResult) {
+    func signInWithFacebook(token: AccessToken, completion: @escaping firebaseAuthResult) {
         let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
             if let _ = authResult {
                 let dateString = ISO8601DateFormatter().string(from: token.expirationDate)
                 self.saveUserCredentials(fbToken: token.tokenString, fbTokenExpDate: dateString)
@@ -72,7 +72,7 @@ class SessionManager {
     func signInWithGmail(auth: GIDAuthentication, completion: @escaping firebaseAuthResult) {
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken,
                                                        accessToken: auth.accessToken)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
             if let _ = authResult {
                 self.saveUserCredentials(googleIDToken: auth.idToken,
                                          googleRefreshToken: auth.refreshToken)

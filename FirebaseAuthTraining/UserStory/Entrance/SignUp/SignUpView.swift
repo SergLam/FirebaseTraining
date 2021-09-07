@@ -11,13 +11,13 @@ import SkyFloatingLabelTextField
 import GoogleSignIn
 import Closures
 
-protocol SignUpViewDelegate: class {
+protocol SignUpViewDelegate: AnyObject {
     func didTapLinkInLabel(_ urlString: String)
     func didTapSignUpButton()
     func didTapFacebookLoginButton()
 }
 
-class SignUpView: UIView {
+final class SignUpView: UIView {
     
     weak var delegate: SignUpViewDelegate?
     

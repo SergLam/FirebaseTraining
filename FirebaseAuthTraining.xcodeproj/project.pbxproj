@@ -35,7 +35,6 @@
 		7CB98A332109E4EF0049B00F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */; };
 		7CB98A362109E9890049B00F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A352109E9890049B00F /* UIViewController+Ext.swift */; };
 		7CB98A38210A0C3E0049B00F /* EntranceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB98A37210A0C3E0049B00F /* EntranceVM.swift */; };
-		7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */; };
 		7CDE31DE2145906B00D3C5FD /* MyProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */; };
 		7CE44DC12211721100569A0B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC02211721100569A0B /* AppState.swift */; };
 		7CE44DC3221172A600569A0B /* AppReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE44DC2221172A600569A0B /* AppReducers.swift */; };
@@ -46,10 +45,11 @@
 		7CEBF180220F831D00D231C9 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF17F220F831D00D231C9 /* SessionManager.swift */; };
 		7CEBF182220F86BD00D231C9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBF181220F86BD00D231C9 /* AppConstants.swift */; };
 		7CECDAC921B2A54900D8EC65 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CECDAC821B2A54900D8EC65 /* MyProfileView.swift */; };
-		88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */; };
+		AE7B6D6D12AC9A676E40BFE6 /* Pods_App_FirebaseAuthTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
 		52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.debug.xcconfig"; sourceTree = "<group>"; };
 		7C0D21F02104CFAF00EDB99D /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7C0D21F22104D00D00EDB99D /* EntranceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVC.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 		7CB98A322109E4EF0049B00F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CB98A352109E9890049B00F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		7CB98A37210A0C3E0049B00F /* EntranceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceVM.swift; sourceTree = "<group>"; };
-		7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsEvents.swift; sourceTree = "<group>"; };
 		7CDE31DD2145906B00D3C5FD /* MyProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVM.swift; sourceTree = "<group>"; };
 		7CE44DC02211721100569A0B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		7CE44DC2221172A600569A0B /* AppReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducers.swift; sourceTree = "<group>"; };
@@ -92,8 +91,9 @@
 		7CEBF17F220F831D00D231C9 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		7CEBF181220F86BD00D231C9 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7CECDAC821B2A54900D8EC65 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-FirebaseAuthTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining.debug.xcconfig"; sourceTree = "<group>"; };
 		D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining.release.xcconfig"; sourceTree = "<group>"; };
-		E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_FirebaseAuthTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F9D4E454B1B3A1D607D0E3 /* Pods_FirebaseAuthTraining.framework in Frameworks */,
+				AE7B6D6D12AC9A676E40BFE6 /* Pods_App_FirebaseAuthTraining.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +261,6 @@
 		7CDE31DB2145900B00D3C5FD /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				7CDE31D9214482F800D3C5FD /* GoogleMapsEvents.swift */,
 				7C91F5AD2116F78600551719 /* MapVC.swift */,
 			);
 			path = Map;
@@ -312,7 +311,7 @@
 		84FCD57B9C359E304FE62577 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E9337A44246C8518F314DF8D /* Pods_FirebaseAuthTraining.framework */,
+				E29CD663DDD4494DC15EC4FD /* Pods_App_FirebaseAuthTraining.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -322,6 +321,8 @@
 			children = (
 				52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */,
 				D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */,
+				B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */,
+				4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -357,7 +358,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = SergLam;
 				TargetAttributes = {
 					7C9AE05A2104C34100DA1D50 = {
@@ -409,7 +410,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FirebaseAuthTraining-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-App-FirebaseAuthTraining-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -422,15 +423,13 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		621642A1C0E65FDC055717ED /* [CP] Copy Pods Resources */ = {
@@ -439,15 +438,13 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FirebaseAuthTraining/Pods-FirebaseAuthTraining-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App-FirebaseAuthTraining/Pods-App-FirebaseAuthTraining-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7C0285562106222C00CEB8FC /* R.Swift */ = {
@@ -460,7 +457,7 @@
 			);
 			name = R.Swift;
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -498,7 +495,6 @@
 				7C1ADDCC22074BEE00F70F2C /* SignUpView.swift in Sources */,
 				7CEBF180220F831D00D231C9 /* SessionManager.swift in Sources */,
 				7CECDAC921B2A54900D8EC65 /* MyProfileView.swift in Sources */,
-				7CDE31DA214482F800D3C5FD /* GoogleMapsEvents.swift in Sources */,
 				7C0D21F12104CFAF00EDB99D /* SignUpVC.swift in Sources */,
 				7C60566B2107A6D5008CF278 /* AppColors.swift in Sources */,
 				7C65E482210DB74700BAE570 /* String+Ext.swift in Sources */,
@@ -560,6 +556,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -585,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -622,6 +619,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -641,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -653,13 +651,13 @@
 		};
 		7C9AE06E2104C34200DA1D50 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52E5E489F202310C1AECF4A8 /* Pods-FirebaseAuthTraining.debug.xcconfig */;
+			baseConfigurationReference = B0BF8266CEDFB8C05A74A5F3 /* Pods-App-FirebaseAuthTraining.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -673,13 +671,13 @@
 		};
 		7C9AE06F2104C34200DA1D50 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D699D64A7C2CFFB9D739FFD7 /* Pods-FirebaseAuthTraining.release.xcconfig */;
+			baseConfigurationReference = 4BF50C325BF5E9A77AD15578 /* Pods-App-FirebaseAuthTraining.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MDWBDEPC5G;
 				INFOPLIST_FILE = FirebaseAuthTraining/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

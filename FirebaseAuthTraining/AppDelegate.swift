@@ -19,7 +19,7 @@ import ReSwift
 let store = Store<AppState>(reducer: appReducer, state: nil, middleware: [])
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyProfileView: UIView {
+final class MyProfileView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)

@@ -11,7 +11,7 @@ import SnapKit
 import FirebaseAuth
 import SCLAlertView
 
-class EntranceVC: UIViewController {
+final class EntranceVC: UIViewController {
     
     private var childControllers: [UIViewController] = []
     private let containerView = UIView()

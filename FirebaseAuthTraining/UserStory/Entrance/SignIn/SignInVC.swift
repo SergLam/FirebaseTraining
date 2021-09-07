@@ -12,7 +12,7 @@ import SkyFloatingLabelTextField
 import SCLAlertView
 import GoogleSignIn
 
-class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
+final class SignInVC: UIViewController {
     
     private var parentVC: EntranceVC?
     private let viewModel = EntranceVM.sharedInstance
@@ -28,7 +28,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
         super.viewDidLoad()
         contentView.delegate = self
         viewModel.delegate = parentVC
-        GIDSignIn.sharedInstance().uiDelegate = viewModel
+        GIDSignIn.sharedInstance().delegate = viewModel
         configureUI()
     }
     
@@ -39,6 +39,19 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
             make.edges.equalToSuperview()
         }
     }
+    
+}
+
+// MARK: - GIDSignInDelegate
+extension SignInVC: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SignInVC: UITextFieldDelegate {
     
 }
 

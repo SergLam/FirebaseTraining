@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class UserModel: Codable {
+public final class UserModel: Codable {
     
     var uid: String = ""
     var createdAt: String = ""

@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-class MyProfileVM {
+final class MyProfileVM {
     
     let provider = MoyaProvider<FirebaseAPI>()
     

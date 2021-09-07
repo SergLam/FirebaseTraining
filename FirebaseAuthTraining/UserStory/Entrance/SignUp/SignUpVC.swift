@@ -13,7 +13,7 @@ import SkyFloatingLabelTextField
 import SafariServices
 import GoogleSignIn
 
-class SignUpVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
+final class SignUpVC: UIViewController {
     
     private var parentVC: EntranceVC?
     
@@ -29,7 +29,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         super.viewDidLoad()
         contentView.delegate = self
         viewModel.delegate = parentVC
-        GIDSignIn.sharedInstance().uiDelegate = viewModel
+        GIDSignIn.sharedInstance().delegate = viewModel
         self.hideKeyboardOnTap()
         configureUI()
     }
@@ -43,6 +43,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
 }
 
+// MARK: - GIDSignInDelegate
+extension SignUpVC: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension SignUpVC: UITextFieldDelegate {
+    
+}
+
+// MARK: - SFSafariViewControllerDelegate
 extension SignUpVC: SignUpViewDelegate, SFSafariViewControllerDelegate {
     func didTapLinkInLabel(_ urlString: String) {
         openURL(urlString)

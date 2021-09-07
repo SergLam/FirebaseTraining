@@ -16,7 +16,7 @@ import GoogleMaps
 import GooglePlaces
 import ReSwift
 
-class VendorService {
+final class VendorService {
     
     static func setupServices(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         // Configure Firebase
@@ -36,11 +36,11 @@ class VendorService {
         GMSPlacesClient.provideAPIKey(AppConstants.googleApiKey)
         
         // Configure facebook login
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     // MARK: Google Sign in methods
@@ -48,8 +48,7 @@ class VendorService {
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
     

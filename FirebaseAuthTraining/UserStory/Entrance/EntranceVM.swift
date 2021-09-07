@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 import Moya
 
-protocol EntranceVMDelegate: class {
+protocol EntranceVMDelegate: AnyObject {
     func onSignUpSucess(_ auth: AuthDataResult)
     func onSignUpError(_ error: String)
     func onResetPasswordSucess()
@@ -37,7 +37,7 @@ enum EntranceError: Error {
     }
 }
 
-class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
+final class EntranceVM: NSObject, GIDSignInDelegate {
     
     weak var delegate: EntranceVMDelegate?
     
@@ -81,9 +81,9 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
     }
     
     func signUpViaFB(){
-        let loginManager = FBSDKLoginManager()
+        let loginManager = LoginManager()
         guard let vc = UIApplication.topViewController() else { return }
-        loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: vc){ [weak self](result, error) in
+        loginManager.logIn(permissions: ["public_profile", "email"], from: vc) { [weak self] result, error in
             //if we ha
             if let err = error {
                 self?.delegate?.onSignUpError(err.localizedDescription)
@@ -97,7 +97,7 @@ class EntranceVM: NSObject, GIDSignInUIDelegate, GIDSignInDelegate {
                 self?.delegate?.onSignUpError(Localizable.errorFbCanceledByUser())
                 return
             }
-            guard let accessToken = FBSDKAccessToken.current() else {
+            guard let accessToken = AccessToken.current else {
                 self?.delegate?.onSignUpError(Localizable.errorFbAccessTokenNil())
                 return
             }

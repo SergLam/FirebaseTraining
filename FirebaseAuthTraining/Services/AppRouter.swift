@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppRouter {
+final class AppRouter {
     
     enum AppState {
         case none
